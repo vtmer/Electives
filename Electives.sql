@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.4.11.1deb1
 -- http://www.phpmyadmin.net
 --
--- 主机: 127.0.0.1
--- 生成日期: 2013 年 07 月 29 日 09:43
--- 服务器版本: 5.5.27
--- PHP 版本: 5.4.7
+-- 主机: localhost
+-- 生成日期: 2013 年 08 月 01 日 13:35
+-- 服务器版本: 5.5.32
+-- PHP 版本: 5.4.6-1ubuntu1.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `elective`
+-- 数据库: `Electives`
 --
 
 -- --------------------------------------------------------
@@ -86,14 +86,13 @@ CREATE TABLE IF NOT EXISTS `course` (
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `student_id` varchar(11) NOT NULL COMMENT '学号',
+  `password` varchar(100) NOT NULL,
   `campus` varchar(50) NOT NULL COMMENT '校区',
   `grade` varchar(10) NOT NULL COMMENT '年级',
   `kickname` varchar(25) NOT NULL COMMENT '昵称',
   `register_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `student_id` (`student_id`),
-  KEY `id` (`id`),
-  KEY `id_2` (`id`)
+  UNIQUE KEY `student_id` (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
@@ -104,8 +103,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- 限制表 `collection`
 --
 ALTER TABLE `collection`
-  ADD CONSTRAINT `collection_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`),
-  ADD CONSTRAINT `collection_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `collection_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `collection_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
 
 --
 -- 限制表 `comment`
