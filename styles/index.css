@@ -1,0 +1,135 @@
+/*!main
+------------------------*/
+.main{
+	width:100%;
+	min-width:960px;
+	height: 650px;
+	position:relative;
+	margin-bottom: 30px;
+	border-top:6px solid #fc8038;
+	background:url('../images/bg-top_index.png') no-repeat 50% 0;
+}
+.bg-box{
+	width:100%;
+	height:50%;
+	position:absolute;
+	left:0;
+	bottom: 0;
+	z-index: 0;
+	background:url('../images/bg-bottom_index.png') no-repeat 50% 0;
+}
+form{
+	width:960px;
+	margin: 0 auto;
+	margin-top:300px;
+	position:relative;
+	z-index: 1000;
+}
+input{
+	display: block;
+	width: 202px;
+	height: 63px;
+	margin:0 auto;
+	margin-bottom:5px;
+	padding:0 30px 0 58px;
+	font-size:18px;
+	background:url(../images/css-sprite.png) no-repeat;
+}
+.lte8 input{
+	line-height: 63px;
+}
+#account{
+	background-position:-7px -5px;
+}
+#password{
+	background-position:-7px -70px;
+}
+button{
+	display: block;
+	width:280px;
+	height:53px;
+	margin:20px auto;
+	font-size:18px;
+}
+.lte8 button{
+	background:url('../images/orange-button-53px.png') no-repeat left top;
+}
+.warning-box{
+	width:100%;
+	text-align:center;
+}
+.warning-box p{
+	display: inline-block;
+	max-width:90%;
+	height:38px;
+	line-height:38px;
+	white-space:nowrap;
+	overflow:hidden;
+	margin-bottom:10px;
+	border:1px solid rgba(255,255,255,.6);
+	padding:0 14px;
+	background-color: rgba(255,255,255,.4);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+	-o-text-overflow:ellipsis;
+	text-overflow: ellipsis;
+}
+.lte8 .warning-box p{
+	width:560px;
+	height:40px;
+	line-height:40px;
+	border:none;
+	background:url('../images/warning-info.png') no-repeat;
+}
+#error-info{
+	color:red;
+}
+/*!intro
+-----------------------------*/
+.intros{
+	width:960px;
+	position:relative;
+	margin:0 auto;
+	font-size:14px;
+	color:#808080;
+}
+.intros h2{
+	width:4em;
+	line-height:2em;
+	margin:0 auto;
+	border-top:1px solid #b8bcc2;
+	font-size:24px;
+}
+.intros div{
+	width:220px;
+	height:200px;
+	overflow:hidden;
+	position:absolute;
+	bottom:0px;
+	padding-top:100px;
+	text-align: center;
+	background:url('../images/css-sprite.png') no-repeat;
+}
+div.intro1{
+	left:0;
+	background-position:88px -170px;
+}
+div.intro2{
+	position:static;
+	margin:0 auto;
+	margin-top:60px;
+	background-position:-42px -270px;
+}
+div.intro3{
+	right:0;
+	background-position:-170px -370px;
+}
+.intros h3{
+	max-width: 100%;
+	line-height: 3em;
+	white-space: nowrap;
+	overflow:hidden;
+	font-size:20px;
+	text-align: center;
+}

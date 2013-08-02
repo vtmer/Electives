@@ -6,20 +6,23 @@ class Login extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('curl_msg');
-		$this->load->helper('url');
-
+		//$this->load->helper('url');
 	}
 
 	public function index()
 	{
-		$this->load->view('login');
+		$header = array('title' => 'index','css_file' => 'index.css');
+		$footer = array('js_file' => 'index.js');
+		$this->parser->parse('template/header',$header);
+		$this->load->view('index');
+		$this->parser->parse('template/footer',$footer);
 		//$this->check();
 	}
 
 	
 	public function check()
 	{
-		$username = $this->input->post('username'); 
+		$username = $this->input->post('account'); 
 		$password = $this->input->post('password');
 		if($username&&$password)
 		{

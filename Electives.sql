@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 08 月 01 日 13:35
+-- 生成日期: 2013 年 08 月 02 日 00:13
 -- 服务器版本: 5.5.32
 -- PHP 版本: 5.4.6-1ubuntu1.3
 
@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 CREATE TABLE IF NOT EXISTS `course` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL COMMENT '课程名',
+  `campus` varchar(50) NOT NULL,
   `kind` varchar(30) NOT NULL COMMENT '课程归属',
   `code` varchar(15) NOT NULL COMMENT '课程编号',
   `teacher` varchar(20) NOT NULL COMMENT '任课老师',
