@@ -33,15 +33,19 @@ class Login extends CI_Controller
 			if($this->user_model->auth($username,$password))
 			{
 				//帐号已存在，密码正确
-				//$result = $this->user_model->get_msg($username);
+				$result_msg = $this->user_model->get_msg($username);
+				//print_r($result);
+				//exit();
 				$data = array(
-					'stu_id' => $username,
-					//'campus' => $result['campus'],
-					//'grade' => $result['grade'],
+					'user_id' => $result_msg->id,
+					'stu_id' => $result_msg->student_id,
+					'campus' => $result_msg->campus,
+					'grade' => $result_msg->grade,
 					'is_logged_in' => TRUE
 				);
 				$this->session->set_userdata($data);
 				redirect('lists');
+
 			}
 			else
 			{
@@ -60,9 +64,12 @@ class Login extends CI_Controller
 					$stu_id = $user_info['stu_id'];
 					$campus = $user_info['campus'];
 					$grade = $user_info['grade'];
+					
+					$result_msg = $this->user_model->get_msg($username);
 
 					$data = array(
-						'stu_id' => $user_info['stu_id'],
+						'user_id' => $result_msg->id,
+						'stu_id' => $result_msg->student_id,
 						'campus' => $user_info['campus'],
 						'grade' => $user_info['grade'],	
 						'is_logged_in' => TRUE

@@ -5,41 +5,24 @@ class Lists extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('course_model');
 	}
 
 	public function index()
 	{
-		if(!$this->is_logged_in())
-		{
-			redirect('login');
-		}
-		else
-		{
-			$header = array('title' => 'list','css_file' => 'list.css');
-			$footer = array('js_file' => 'list.js');
-			$this->parser->parse('template/header',$header);
-			$this->load->view('list');
-			$this->parser->parse('template/footer',$footer);
-		}	
+		$data['courses'] = $this->course_model->show_courses();	
+		$this->load_page($data);
+
 	}
 
-	public function logout()
-	{
-		if(!$this->is_logged_in())
-		{
-			redirect('login');
-		}
-		else
-		{
-			$this->session->sess_destroy();
-			$this->session->set_userdata(array('is_logged_in' => FALSE));
-			$this->load->view('index');
-		}
-	}
 
-	private function is_logged_in()
+	public function load_page($data)
 	{
-		return $this->session->userdata('is_logged_in');
+		$header = array('title' => 'list','css_file' => 'list.css');
+		$footer = array('js_file' => 'list.js');
+		$this->parser->parse('template/header',$header);
+		$this->load->view('list',$data);
+		$this->parser->parse('template/footer',$footer);
 	}
 }
 

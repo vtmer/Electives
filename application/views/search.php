@@ -1,7 +1,7 @@
 <body class='search-page'>
 		<div class='header'>
 			<div class="header-inner">
-				<a href='#' class='logo'>工大选修</a>
+				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
 				<form action='' method='' class='search'>
 					<input type='text' name='' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
 				</form>

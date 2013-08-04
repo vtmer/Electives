@@ -1,7 +1,7 @@
 <body class='list-page'>
 		<div class='header'>
 			<div class="header-inner">
-				<a href='#' class='logo'>工大选修</a>
+				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
 				<form action='' method='' class='search'>
 					<input type='text' name='' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
 				</form>
@@ -67,15 +67,17 @@
 					<li class='assess-area'>考试难度</li>
 					<li class='cancel-area'></li>
 				</ul>
+				<?php foreach($courses as $row):?>
 				<ul class='clearfix'>
-					<li class='num-area'>01</li>
-					<li class='id-area' title='01137715'>01137715</li>
-					<li class='classname-area' title='由案说法'>由案说法</li>
-					<li class='assess-area'><span class='star-assess star-1'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-3'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-5'>星级评分</span></li>
+					<li class='num-area'><?php if($row['id']<10&&$row['id']>0) echo '0'.$row['id']; ?></li>
+					<li class='id-area' title='<?php echo $row['code']?>'><?php echo $row['code']?></li>
+					<li class='classname-area' title='<?php echo $row['name']; ?>'><a href="<?php echo site_url('intro').'/index/'.$row['id'];?>"><?php echo $row['name']; ?></a></li>
+					<li class='assess-area'><span class='star-assess star-<?php echo $row['multiple_grade']; ?>'>星级评分</span></li>
+					<li class='assess-area'><span class='star-assess star-<?php echo $row['interest_grade']; ?>'>星级评分</span></li>
+					<li class='assess-area'><span class='star-assess star-<?php echo $row['exam_grade']; ?>'>星级评分</span></li>
 				</ul>
-				<ul class='clearfix'>
+				<?php endforeach;?>
+				<!--<ul class='clearfix'>
 					<li class='num-area'>123</li>
 					<li class='id-area' title='01137715'>01137715</li>
 					<li class='classname-area' title='由案说法由案说法由案说法由啦啦啦啦啦啦！！！！！！！！'>由案说法由案说法由案说法由啦啦啦啦啦啦！！！！！！！！</li>
@@ -98,7 +100,7 @@
 					<li class='assess-area'><span class='star-assess star-4'>星级评分</span></li>
 					<li class='assess-area'><span class='star-assess star-0'>星级评分</span></li>
 					<li class='assess-area'><span class='star-assess star-1'>星级评分</span></li>
-				</ul>
+				</ul>-->
 				<a href='#' id='go-top'>置顶按钮</a>
 			</div>
 			<a href='#' class='load-more'>加载更多<span>...</span></a>
