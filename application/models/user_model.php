@@ -16,7 +16,7 @@ class User_model extends CI_Model
 	{
 		$this->db->insert('user',array(
 				'student_id' => $user_info['stu_id'],
-				'password' => $password,
+				'password' => md5($password),
 				'campus' => $user_info['campus'],
 				'grade' => $user_info['grade']
 		));
@@ -24,7 +24,7 @@ class User_model extends CI_Model
 
 	public function auth($username,$password)
 	{
-		$query = $this->db->get_where('user',array('student_id' => $username,'password' => $password));
+		$query = $this->db->get_where('user',array('student_id' => $username,'password' => md5($password)));
 		return ($query->num_rows() == 1) ? TRUE : FALSE;
 	}
 

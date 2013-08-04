@@ -56,7 +56,7 @@ class Login extends CI_Controller
 				if($result['status'])
 				{
 					$user_info = $this->curl_msg->get_info($result['s_id']);
-					print_r($user_info);
+					//print_r($user_info);  //输出从学生工作管理系统返回的信息
 					$stu_id = $user_info['stu_id'];
 					$campus = $user_info['campus'];
 					$grade = $user_info['grade'];
@@ -68,7 +68,7 @@ class Login extends CI_Controller
 						'is_logged_in' => TRUE
 					);	 
 					$this->session->set_userdata($data);
-					var_dump($data);	
+					//var_dump($data); //输出session
 					if($this->user_model->is_exist($stu_id))
 					{
 						echo "<script>alert('帐号已存在!');</script>";						
@@ -78,6 +78,7 @@ class Login extends CI_Controller
 					{
 						echo "<script>alert('首次登录，先完善资料哈！');</script>";
 						$this->user_model->insert($user_info,$password);
+						redirect('lists','refresh');
 					}
 						//print_r($array);
 				
@@ -118,7 +119,7 @@ class Login extends CI_Controller
 		$this->parser->parse('template/header',$header);
 		$this->load->view('index');
 		$this->parser->parse('template/footer',$footer);
-	}
+	}	
 }
-
+	
 ?>

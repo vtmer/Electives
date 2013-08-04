@@ -13,6 +13,4 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/reset.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/global.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles');?>/{css_file}" />
-		
-
 	</head>

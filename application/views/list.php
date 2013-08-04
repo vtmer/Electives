@@ -7,8 +7,8 @@
 				</form>
 				<a href='#' id='portrait' ><img src="<?php echo base_url('images/portrait.png');?>" /><span class='list-state'></span></a>
 				<ul class='drop-list'>
-					<li><a href='http://baidu.com'>我的收藏</a></li>
-					<li><a href='#'>修改资料</a></li>
+					<li><a href='<?php echo site_url('favorite'); ?>'>我的收藏</a></li>
+					<li><a href='<?php echo site_url('alter'); ?>'>修改资料</a></li>
 					<li><a href='<?php echo site_url('login/logout');?>'>退出登录</a></li>
 					<span class='arrow'></span>
 				</ul>

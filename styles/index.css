@@ -7,7 +7,7 @@
 	position:relative;
 	margin-bottom: 30px;
 	border-top:6px solid #fc8038;
-	background:url('../images/bg-top_index.png') no-repeat 50% 0;
+	background:url(../images/bg-top_index.png) no-repeat 50% 0;
 }
 .bg-box{
 	width:100%;
@@ -16,7 +16,7 @@
 	left:0;
 	bottom: 0;
 	z-index: 0;
-	background:url('../images/bg-bottom_index.png') no-repeat 50% 0;
+	background:url(../images/bg-bottom_index.png) no-repeat 50% 0;
 }
 form{
 	width:960px;
@@ -52,7 +52,7 @@ button{
 	font-size:18px;
 }
 .lte8 button{
-	background:url('../images/orange-button-53px.png') no-repeat left top;
+	background:url(../images/orange-button-53px.png) no-repeat left top;
 }
 .warning-box{
 	width:100%;
@@ -80,7 +80,7 @@ button{
 	height:40px;
 	line-height:40px;
 	border:none;
-	background:url('../images/warning-info.png') no-repeat;
+	background:url(../images/warning-info.png) no-repeat;
 }
 #error-info{
 	color:red;
@@ -109,7 +109,7 @@ button{
 	bottom:0px;
 	padding-top:100px;
 	text-align: center;
-	background:url('../images/css-sprite.png') no-repeat;
+	background:url(../images/css-sprite.png) no-repeat;
 }
 div.intro1{
 	left:0;

@@ -24,15 +24,15 @@
 				</form>
 				<a href='#' id='portrait' ><img src='images/portrait.png' /><span class='list-state'></span></a>
 				<ul class='drop-list'>
-					<li><a href='http://baidu.com'>我的收藏</a></li>
-					<li><a href='#'>修改资料</a></li>
+					<li><a href='<?php echo site_url('favorite'); ?>'>我的收藏</a></li>
+					<li><a href='<?php echo site_url('alter'); ?>'>修改资料</a></li>
 					<li><a href='<?php echo site_url('login/logout'); ?>'>退出登录</a></li>
 					<span class='arrow'></span>
 				</ul>
 			</div>
 		</div>
 		<div class='crumbs wrap clearfix'>
-			<a href='#'>主页<span class='arrow'></span></a><a href='#'>课程列表<span class='arrow'></span></a><strong>什么什么课程</strong>
+			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><a href='<?php echo site_url('lists'); ?>'>课程列表<span class='arrow'></span></a><strong>什么什么课程</strong>
 		</div>
 		<div class='main'>
 			<div class="main-content">

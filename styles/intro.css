@@ -1,23 +1,6 @@
 .main{
 	position:relative;
 }
-.data-list li{
-	width:auto;
-	/*height:1.8em;
-	line-height: 1.8em;*/
-	position:relative;
-	/*overflow: hidden;
-	white-space: nowrap;
-	text-overflow:ellipsis;
-	-o-text-overflow:ellipsis;*/
-	padding-left:5em;
-}
-.item-desc{
-	width:4em;
-	position:absolute;
-	left:0;
-	top:0;
-}
 /*!main-content
 ------------------------*/
 .main-content{
@@ -192,6 +175,13 @@ a.share-class{
 	-webkit-box-shadow: 0 0 8px 2px rgba(0,0,0,0.5);
 	box-shadow: 0 0 8px 2px rgba(0,0,0,0.5);
 }
+.window-handle{
+	width:100%;
+	height:48px;
+	position:absolute;
+	left:0;
+	top:0;
+}
 .window-close-button{
 	width:48px;
 	height:48px;
@@ -224,7 +214,7 @@ a.share-class{
 	font-size: 15px;
 }
 .lte8 .window button{
-	background-image:url(../images);
+	background-image:url(../images/orange-button-38px.png);
 }
 .window input ,
 .window textarea{
@@ -234,4 +224,17 @@ a.share-class{
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius:5px;
+}
+
+.window .star-assess{
+	/*text-indent: 0;*/
+}
+.window .star-assess a{
+	display:block;
+	width:13px;
+	height:2em;
+	/*background:red;*/
+	float:left;
+	padding-right:5px;
+	/*margin-right:5px;*/
 }

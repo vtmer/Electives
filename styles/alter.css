@@ -1,0 +1,58 @@
+.main .data-list li{
+	line-height: 2em;
+	padding-left:4em;
+	font-size: 14px;
+	margin-bottom: 16px;
+}
+.main form{
+	width:60%;
+	margin:0 auto;
+}
+.main h2{
+	line-height:34px;
+	font-size:16px;
+	border-top:1px solid #bcc4cc;
+	border-bottom:1px solid #bcc4cc;
+	margin-bottom:20px;
+	padding-left:26px;
+	background:url(../images/css-sprite.png) no-repeat;
+}
+.main h2 span{
+	font-size: 13px;
+	padding-left:0.4em;
+}
+.main button{
+	width:73px;
+	height:32px;
+}
+.lte8 .main button{
+	background-image:url(../images/orange-button-32px.png);
+}
+/*alter-portrait*/
+.alter-portrait{
+	margin-bottom:30px;
+}
+.alter-portrait img{
+	width:140px;
+	height:140px;
+	margin-right:20px;
+	border:1px solid #e6ebf2;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius:6px;
+}
+.alter-portrait h2{
+	background-position: -522px -259px;
+}
+/*alter-profile*/
+.alter-profile h2{
+	background-position: -522px -259px;
+}
+.alter-profile input {
+	width:130px;
+	padding:6px 8px;
+	border:1px solid #bfbfbf;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}

@@ -23,9 +23,103 @@
 				}
 			});
 			return this;
+		},
+		//内容域相对窗口的位置
+		offset_content : function(){
+			var $this = this;
+			var left = $this.offset().left + parseFloat($this.css('border-left-width'));
+			var top = $this.offset().top + parseFloat($this.css('border-top-width'));
+			return {
+				left:left,
+				top:top
+			};
+		},
+		draggable: function(opts){
+			var $this = $(this);
+			var $elem = $this;
+			// 默认值：
+			// 1、限制容器，默认为最近定位父级元素
+			// 2、拖动触发对象，默认为该元素自身
+			// 3、水平锁定，即只能垂直移动，默认关闭
+			// 4、垂直锁定，即只能水平移动，默认关闭
+			var options = $.extend({
+				container : $this.offsetParent(),
+				dragHandle : $this,
+				lockX : false,
+				lockY : false
+			}, opts);
+			var $parent = $this.offsetParent();
+			//计算最近定位父元素内容区域相对于window的位置
+			var p_left = $parent.offset_content().left;
+			var p_top = $parent.offset_content().top;
+			//计算容器内容区域相对于window的位置
+			var c_left = options.container.offset_content().left;
+			var c_top = options.container.offset_content().top;
+			//计算 left 和 top 的最大值
+			var minLeft = c_left - p_left;
+			var minTop = c_top - p_top;
+			//计算 left 和 top 的最大值
+			var maxLeft = options.container.innerWidth() + minLeft - $this.outerWidth();
+			var maxTop = options.container.innerHeight() + minTop - $this.outerHeight();
+			//重设css样式
+			if($this.css('position') !== 'absolute'){
+				$this.css('position', 'absolute');
+			}
+			$this.css('margin','0');
+			// 自定义move事件
+			$this.on('move', function(event, targetLeft, targetTop){
+				var $this = $(this);
+				if(!options.lockX){
+					if(targetLeft > maxLeft){
+						$this.css('left', maxLeft);
+					}else if(targetLeft < minLeft){
+						$this.css('left', minLeft);
+					}else{
+						$this.css('left', targetLeft);
+					}
+				}
+				if(!options.lockY){
+					if(targetTop > maxTop){
+						$this.css('top', maxTop);
+					}else if(targetTop < minTop){
+						$this.css('top', minTop);
+					}else{
+						$this.css('top', targetTop);
+					}
+				}
+			});
+			options.dragHandle
+				.on('mousedown', function(event){
+					$(this).css('cursor', 'move');
+					//获取鼠标坐标和元素坐标的差值
+					var dLeft = event.pageX - $elem.offset().left;
+					var dTop = event.pageY - $elem.offset().top;
+					$(document).on('mousemove.drag', {dLeft:dLeft,dTop:dTop}, function(event){
+						//计算目标 left 和 top 值
+						var targetLeft = event.pageX - p_left - event.data.dLeft;
+						var targetTop = event.pageY - p_top - event.data.dTop;
+						$elem.triggerHandler('move', [targetLeft, targetTop]);
+						//每次拖动都清除文字选择
+						$.clearSlct();
+					})
+					.on('mouseup.drag', function(){
+						$(this).off('mousemove.drag mouseup.drag');
+					});
+					//取消鼠标的选择文本状态
+					event.preventDefault();
+				})
+				.on('mouseup', function(){
+					$(this).css('cursor', 'auto');
+				});
 		}
 	});
 	$.extend({
+		//清除文字选取
+		clearSlct: "getSelection" in window ? function(){
+            window.getSelection().removeAllRanges();
+        } : function(){
+            document.selection.empty();
+        },
 		createPlaceholder: function(elem){
 			//判断浏览器是否支持placeholder属性
 			if(!('placeholder' in document.createElement('input'))){
@@ -189,6 +283,9 @@
 				width = $elem.innerWidth(),
 				height = $elem.innerHeight();
 			var $overlay = $('.window-overlay');
+			// $elem.draggable({dragHandle : $('.window-close-button')});
+			$elem.draggable({dragHandle : $('.window-handle')});
+			// $elem.draggable();
 			if($overlay.length){
 				$elem.appendTo($overlay);
 			}else{
@@ -247,27 +344,6 @@
 					return false;
 				});
 			}
-			/*拖拽效果
-			----------------------*/ 
-			// $elem
-			// 	.on('mousedown', function(event){
-			// 		var l = event.pageX - $(this).offset().left;
-			// 		var t = event.pageY - $(this).offset().top;
-			// 		$(document).on('mousemove.window', {dLeft:l,dTop:t}, function(event){
-			// 			var dLeft = event.data.dLeft;
-			// 			var dTop = event.data.dTop;
-			// 			$elem.css({
-			// 				'left':event.pageX - dLeft,
-			// 				'top':event.pageY - dTop
-			// 			});
-			// 		});
-			// 	})
-			// 	.on('mouseup', function(){
-			// 		$(document).off('mousemove.window');
-			// 	});
-			// $elem.children().on('mousedown mouseup', function(event){
-			// 	event.stopPropagation();
-			// });
 		}
 	});
 
@@ -290,15 +366,5 @@
 		---------------------------------------*/
 		var $goTopButton = $('#go-top');
 		if($goTopButton.length)$.createGoTop($goTopButton);
-		/*生成弹窗
-		--------------------------------------*/ 
-		var $windowOverlay = $('.window-overlay');
-		var $theWindow = $('.window');
-		$.createWindow($theWindow);
-		var $commentButton = $('.comment-class');
-		$commentButton.on('click', function(event){
-			$theWindow.triggerHandler('open');
-			event.preventDefault();
-		});
 	});
 })(jQuery);
