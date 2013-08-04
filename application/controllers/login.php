@@ -25,8 +25,8 @@ class Login extends CI_Controller
 	
 	public function check()
 	{
-		$username = $this->input->post('account'); 
-		$password = $this->input->post('password');
+		$username = $this->input->post('account',TRUE); 
+		$password = $this->input->post('password',TRUE);
 		
 		if($this->user_model->is_exist($username))
 		{
@@ -50,10 +50,11 @@ class Login extends CI_Controller
 			else
 			{
 				echo "<script>alert('密码不正确！');</script>";
+				redirect('login','refresh');
 			}
 		}		
 		else
-		{
+		{   //首次登录，帐号密码经学生工作管理系统网站验证
 			if($username&&$password)
 			{
 				$result = $this->curl_msg->check_login($username,$password);
@@ -76,23 +77,24 @@ class Login extends CI_Controller
 					);	 
 					$this->session->set_userdata($data);
 					//var_dump($data); //输出session
-					if($this->user_model->is_exist($stu_id))
+					/*if($this->user_model->is_exist($stu_id))
 					{
 						echo "<script>alert('帐号已存在!');</script>";						
 						redirect('lists');
 					}
 					else
+					{*/
+					if($this->user_model->insert($user_info,$password))
 					{
 						echo "<script>alert('首次登录，先完善资料哈！');</script>";
-						$this->user_model->insert($user_info,$password);
-						redirect('lists','refresh');
+						redirect('alter','refresh');
 					}
 						//print_r($array);
 				
 				}
 				else
 				{
-					echo "<script>alert('密码错误！');</script>";
+					echo "<script>alert('帐号或密码错误！');</script>";
 					redirect('login','refresh');
 				}
 			}

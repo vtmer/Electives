@@ -38,6 +38,21 @@ class Course_model extends CI_Model
 		$query = $this->db->get_where('comment',array('course_id' => $course_id,'user_id' => $user_id));
 		return $query->result_array();
 	}
+
+	public function search($keywords)
+	{
+		$this->db->like('name',$keywords);
+		$this->db->or_like('code',$keywords);
+		$query = $this->db->get('course');
+		if($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
 }
 
 ?>
