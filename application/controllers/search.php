@@ -11,10 +11,15 @@ class Search extends CI_Controller
 	public function index()
 	{
 		$keywords = $this->input->post('keyword',TRUE);
-		$data['search_result'] = $this->course_model->search($keywords);
-		$data['keyword'] = $keywords;
-		if($keywords == null)
+		if($keywords)
 		{
+			$data['search_result'] = $this->course_model->search($keywords);
+			$data['keyword'] = $keywords;
+		}
+		else if($keywords == null)
+		{
+			$data['search_result'] = null;
+			$data['keyword'] = null;
 			$data['none'] = '空';
 		}
 		$this->load_page($data);

@@ -15,8 +15,8 @@ class Intro extends CI_Controller
 		$user_id = $this->session->userdata('user_id');
 		$stu_id = $this->session->userdata('stu_id');
 		$data['intro'] = $this->course_model->show_intro($course_id);
-		$data['comment'] = $this->course_model->show_comment($course_id,$user_id);
-		$data['user'] = $this->user_model->show_user($user_id);
+		$data['comment'] = $this->course_model->show_comment($course_id);
+		//$data['user'] = $this->user_model->show_user($user_id);
 		$this->load_page($data);		
 	}
 

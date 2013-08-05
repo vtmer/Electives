@@ -21,7 +21,7 @@
 		<div class='main wrap'>
 			
 			<?php if(!$status):?>
-			<p class='tips'>您的收藏夹为空！快去<a href='#'>什么什么地方</a>挑选您喜爱的课程吧！！</p>
+			<p class='tips'>您的收藏夹为空！快去<a href='<?php echo site_url('lists'); ?>'><strong> 主页 </strong></a>挑选您喜爱的课程吧！！</p>
 			<?php endif;?>
 			 
 			<div class='class-list'>
@@ -36,22 +36,22 @@
 					<li class='cancel-area'></li>
 				</ul>
 				
-				
+				<?php if($status):?>
 				<?php foreach($favorite as $row):?>
 				<ul class='clearfix'>
-					<li class='num-area'><?php echo $row['id'];?></li>
+					<li class='num-area'><?php if($row['id']<10&&$row['id']>0) {echo '0'.$row['id'];} else {echo $row['id'];} ?></li>
 					<li class='id-area' title='<?php echo $row['code'];?>'><?php echo $row['code'];?></li>
-					<li class='classname-area' title='<?php echo $row['name'];?>'><?php echo $row['name'];?></li>
+					<li class='classname-area' title='<?php echo $row['name'];?>'><a href="<?php echo site_url('intro').'/index/'.$row['id'];?>"><?php echo $row['name'];?></a></li>
 					<li class='assess-area'><span class='star-assess star-<?php echo $row['multiple_grade'];?>'>星级评分</span></li>
 					<li class='assess-area'><span class='star-assess star-<?php echo $row['interest_grade'];?>'>星级评分</span></li>
 					<li class='assess-area'><span class='star-assess star-<?php echo $row['exam_grade'];?>'>星级评分</span></li>
 					<li class='cancel-area'>
-						<a href='#' class='orange-button' id='cancel-button'>取消收藏</a>
+						<a href="<?php echo site_url('favorite/cancel').'/'.$row['id']; ?>" class='orange-button' id='cancel-button'>取消收藏</a>
 					</li>
 				</ul>
 
-			<?php endforeach;?>
-
+				<?php endforeach;?>
+				<?php endif;?>
 				<!--<ul class='clearfix'>
 					<li class='num-area'>123</li>
 					<li class='id-area' title='01137715'>01137715</li>

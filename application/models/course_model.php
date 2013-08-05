@@ -7,9 +7,12 @@ class Course_model extends CI_Model
 		parent::__construct();
 	}
 
-	public function show_courses()
+	public function show_courses($campus,$kind,$grade)
 	{
-		$query = $this->db->get_where('course');
+		$limit = array('campus' => $campus,'kind' => $kind);
+		$this->db->where($limit);
+		$this->db->order_by($grade,'desc');
+		$query = $this->db->get('course');
 		if($query->num_rows() > 0)
 		{
 			return $query->result_array();
@@ -33,9 +36,9 @@ class Course_model extends CI_Model
 		}
 	}
 
-	public function show_comment($course_id,$user_id)
+	public function show_comment($course_id)
 	{
-		$query = $this->db->get_where('comment',array('course_id' => $course_id,'user_id' => $user_id));
+		$query = $this->db->get_where('comment',array('course_id' => $course_id));
 		return $query->result_array();
 	}
 
@@ -53,6 +56,28 @@ class Course_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	public function filter($campus = false,$kind = false,$grade = false)
+	{
+		if($campus&&$kind)
+		{
+			$limit = array('campus' => $campus,'kind' => $kind);
+			$this->db->where($limit);
+		}
+		if($grade)
+		{
+			$this->db->order_by($grade,'desc');
+		}
+		$query = $this->db->get('course');
+		if($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return FALSE;
+		}
+	}	
 }
 
 ?>

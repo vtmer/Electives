@@ -19,7 +19,7 @@
 		</div>
 		<div class='main wrap'>
 			<?php $i = 0;?>
-			<?php if(!isset($search_result)):?>
+			<?php if(isset($search_result)&&$search_result !== null):?>
 			<?php foreach($search_result as $row): $i++;?>
 			<?php endforeach;?>
 			<?php endif;?>
@@ -35,11 +35,11 @@
 					<li class='cancel-area'></li>
 				</ul>
 				
-				<?php if(!isset($search_result)):?>
+				<?php if(isset($search_result)&&$search_result):?>
 				<?php foreach($search_result as $row): ?>
 				<?php $i++;?>
 				<ul class='clearfix'>
-					<li class='num-area'><?php if($row['id']<10&&$row['id']>0) echo '0'.$row['id']; ?></li>
+					<li class='num-area'><?php if($row['id']<10&&$row['id']>0) {echo '0'.$row['id'];} else {echo $row['id'];} ?></li>
 					<li class='id-area' title='<?php echo $row['code']; ?>'><?php echo $row['code']; ?></li>
 					<li class='classname-area' title='<?php echo $row['name']; ?>'><a href="<?php echo site_url('intro').'/index/'.$row['id'];?>"><?php echo $row['name']; ?></a></li>
 					<li class='assess-area'><span class='star-assess star-<?php echo $row['multiple_grade']; ?>'>星级评分</span></li>

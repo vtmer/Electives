@@ -23,6 +23,39 @@ class Favorite extends CI_Controller
 		$this->load_page($data);
 	}
 
+	public function cancel($collect_id)
+	{
+		if($this->user_model->cancel_favor($collect_id))
+		{
+			echo "<script>alert('取消收藏成功！');</script>";
+			redirect('favorite','refresh');
+		}
+		else
+		{
+			echo "<script>alert('取消收藏失败！');</script>";
+			redirect('favorite','refresh');
+		}
+	}
+
+	public function add($user_id,$course_id)
+	{
+		$result = $this->user_model->add_favor($user_id,$course_id);
+		if($result == 'repeat')
+		{
+			echo "<script>alert('你已经收藏过了！');</script>";
+			redirect('favorite','refresh');
+		}
+		else if($result)
+		{
+			echo "<script>alert('收藏成功！');</script>";
+			redirect('favorite','refresh');
+		}
+		else
+		{
+			echo "<script>alert('收藏失败！');</script>";
+			redirect('favorite','refresh');
+		}
+	}
 
 	public function load_page($data)
 	{

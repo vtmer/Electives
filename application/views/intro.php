@@ -19,8 +19,8 @@
 		<div class='header'>
 			<div class="header-inner">
 				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
-				<form action='' method='' class='search'>
-					<input type='text' name='' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
+				<form action='<?php echo site_url('search'); ?>' method='post' class='search'>
+					<input type='text' name='keyword' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
 				</form>
 				<a href='#' id='portrait' ><img src='images/portrait.png' /><span class='list-state'></span></a>
 				<ul class='drop-list'>
@@ -66,7 +66,7 @@
 					<div class='comment-box'>
 						<div class='comment-content'>
 							<img src='images/portrait.png' title='阿猫'/>
-							<h3><?php foreach($user as $row_user):?><?echo $row_user['kickname'];?><?php endforeach;?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
+							<h3><?echo $row_comment['kickname'];?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
 							<ul class='data-list'>
 								<li><span class='item-desc'>考试方式</span><?php echo $row_comment['exam_form']; ?></li>
 								<li><span class='item-desc'>课程评价</span><?php echo $row_comment['content']; ?></li>
@@ -157,7 +157,7 @@
 				</ul>
 				<ul class='sidebar-list'>
 					<li><a href='#' class='comment-class'>我要评价</a></li>
-					<li><a href='#' class='favorite-class'>收藏</a></li>
+					<li><a href='<?php echo site_url('favorite/add').'/'.$this->session->userdata('user_id').'/'.$row_course['id']; ?>' class='favorite-class'>收藏</a></li>
 					<li><a href='#' class='share-class'>分享</a></li>
 				</ul>
 			</div>

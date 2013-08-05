@@ -79,6 +79,40 @@ class User_model extends CI_Model
 
 	}
 
+	public function cancel_favor($collect_id)
+	{
+		$query = $this->db->delete('collection',array('id' => $collect_id));
+		if($query)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
+	public function add_favor($user_id,$course_id)
+	{
+		$query_only = $this->db->get_where('collection',array('user_id' => $user_id,'course_id' => $course_id));
+		if($query_only->num_rows > 0)
+		{
+			return 'repeat';
+		}
+		else if($query_only->num_rows == 0)
+		{
+			$query = $this->db->insert('collection',array('user_id' => $user_id,'course_id' => $course_id));
+			if($query)
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
+	}
+
 }
 
 ?>

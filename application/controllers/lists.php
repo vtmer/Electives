@@ -10,7 +10,10 @@ class Lists extends CI_Controller
 
 	public function index()
 	{
-		$data['courses'] = $this->course_model->show_courses();	
+		$campus = $this->session->userdata('campus');
+		$kind = '人文社会科学类';
+		$grade = 'multiple_grade';
+		$data['courses'] = $this->course_model->show_courses($campus,$kind,$grade);	
 		$this->load_page($data);
 
 	}
@@ -23,6 +26,20 @@ class Lists extends CI_Controller
 		$this->parser->parse('template/header',$header);
 		$this->load->view('list',$data);
 		$this->parser->parse('template/footer',$footer);
+	}
+
+	public function select()
+	{
+		$cam_select = $this->input->post('school-select');
+		$kind_select = $this->input->post('class-select');
+		$assess_select = $this->input->post('assess-select');
+		
+		$data['courses'] = $this->course_model->filter($cam_select,$kind_select,$assess_select);	
+		$this->load_page($data);
+		//echo "<script>alert('".$cam_select.$kind_select.$assess_select."');</script>";	
+
+		
+		//$assess_select = $this->input->post('assess_select');
 	}
 }
 
