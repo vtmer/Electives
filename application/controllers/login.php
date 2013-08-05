@@ -112,7 +112,7 @@ class Login extends CI_Controller
 			$this->session->sess_destroy();
 			$this->session->set_userdata(array('is_logged_in' => FALSE));
 			//$this->load_page();	
-			redirect('login','refresh');
+			redirect('login');
 		}
 	}
 

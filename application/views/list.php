@@ -20,9 +20,9 @@
 		<div class='main wrap'>
 			<form class='select-box clearfix' action="<?php echo site_url('lists/select'); ?>" method="post" >
 				<div>
-					<input type='hidden' name='school-select' id='school-select' value='大学城校区' />
+					<input type='hidden' name='school-select' id='school-select' value='<?php if(isset($cam_select)) {echo $cam_select;} else {echo $this->session->userdata('campus');} ?>' />
 					<a href='#' class='select-button'>
-						<span class='select-text' >大学城校区</span><span class='list-state' ></span>
+						<span class='select-text' ><?php if(isset($cam_select)) {echo $cam_select;} else {echo $this->session->userdata('campus');} ?></span><span class='list-state' ></span>
 					</a>
 				 
 					<ul class='drop-list' >
@@ -34,9 +34,9 @@
 				 
 				</div>
 				<div>
-					<input type='hidden' name='class-select' id='class-select' value='人文社会科学类' />
+					<input type='hidden' name='class-select' id='class-select' value='<?php if(isset($kind_select)) {echo $kind_select;} else {echo '人文社会科学类';} ?>' />
 					<a href='#' class='select-button'>
-						<span class='select-text'>人文社会科学类</span><span class='list-state'></span>
+						<span class='select-text'><?php if(isset($kind_select)) {echo $kind_select;} else {echo '人文社会科学类'; } ?></span><span class='list-state'></span>
 					</a>
 					<ul class='drop-list'>
 						<li><a href='#' val='人文社会科学类' class='on-select'>人文社会科学类</a></li>
@@ -46,9 +46,9 @@
 					</ul>
 				</div>
 				<div>
-					<input type='hidden' name='assess-select' id='assess-select' value='multiple_grade' />
+					<input type='hidden' name='assess-select' id='assess-select' value='<?php if(isset($assess_select)) {echo $assess_select;} else {echo 'multiple_grade'; }?>' />
 					<a href='#' class='select-button'>
-						<span class='select-text'>按综合星级排序</span><span class='list-state'></span>
+						<span class='select-text'>按<?php if(isset($assess_select_cn)) {echo $assess_select_cn;} else {echo '综合星级'; } ?>排序</span><span class='list-state'></span>
 					</a>
 					<ul class='drop-list'>
 						<li><a href='#' val='multiple_grade' class='on-select'>按综合星级排序</a></li>

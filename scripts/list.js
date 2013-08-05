@@ -2,6 +2,7 @@
 	$(function(){
 		/*绑定多选下拉框
 		----------------------------------------------------*/
+		/*$("a[value$='人文社会科学类']").show();*/
 		var $selectButton = $('.select-box').find('.select-button');
 		var $selectList = $('.select-box').find('.drop-list');
 		$selectList.css('display','none');
@@ -31,6 +32,7 @@
 				$targetButton.replaceText($.trim($this.text()));
 			}
 			event.preventDefault();
+
 		});
 	});
 })(jQuery);

@@ -15,12 +15,30 @@ class Search extends CI_Controller
 		{
 			$data['search_result'] = $this->course_model->search($keywords);
 			$data['keyword'] = $keywords;
+			$i = 0;
+			if($data['search_result'])
+			{
+				foreach($data['search_result'] as $val)
+				{
+					$i++;
+				}
+				$data['num'] = $i;
+			}
+			else
+			{
+				$data['num'] = 0;
+			}
+			/*if($data['search_result'] == null)
+			{
+				$data['']
+			}*/
 		}
 		else if($keywords == null)
 		{
 			$data['search_result'] = null;
 			$data['keyword'] = null;
 			$data['none'] = '空';
+			$data['num'] = 0;
 		}
 		$this->load_page($data);
 	}

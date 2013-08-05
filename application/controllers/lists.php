@@ -35,6 +35,23 @@ class Lists extends CI_Controller
 		$assess_select = $this->input->post('assess-select');
 		
 		$data['courses'] = $this->course_model->filter($cam_select,$kind_select,$assess_select);	
+		$data['cam_select'] = $cam_select;
+		$data['kind_select'] = $kind_select;
+		$data['assess_select'] = $assess_select;
+		switch($assess_select)
+		{
+			case 'multiple_grade':
+				$data['assess_select_cn'] = '综合星级';
+				break;
+
+			case 'interest_grade':
+				$data['assess_select_cn'] = '趣味性';
+				break;
+
+			case 'exam_grade':
+				$data['assess_select_cn'] = '考试难度';
+				break;
+		}
 		$this->load_page($data);
 		//echo "<script>alert('".$cam_select.$kind_select.$assess_select."');</script>";	
 

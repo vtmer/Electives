@@ -18,12 +18,8 @@
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><strong>课程列表</strong>
 		</div>
 		<div class='main wrap'>
-			<?php $i = 0;?>
-			<?php if(isset($search_result)&&$search_result !== null):?>
-			<?php foreach($search_result as $row): $i++;?>
-			<?php endforeach;?>
-			<?php endif;?>
-			<p class='tips'>您搜索的关键字为 <strong><?php if(isset($none)){echo $none;} else {echo $keyword;} ?></strong> ，共有 <strong><?php echo $i;?></strong> 个结果！</p>
+			
+			<p class='tips'>您搜索的关键字为 <strong><?php if(isset($none)){echo $none;} else {echo $keyword;} ?></strong> ，共有 <strong><?php echo $num;?></strong> 个结果！</p>
 			<div class='class-list'>
 				<ul class='list-title clearfix'>
 					<li class='num-area'>序号</li>
@@ -37,7 +33,7 @@
 				
 				<?php if(isset($search_result)&&$search_result):?>
 				<?php foreach($search_result as $row): ?>
-				<?php $i++;?>
+				
 				<ul class='clearfix'>
 					<li class='num-area'><?php if($row['id']<10&&$row['id']>0) {echo '0'.$row['id'];} else {echo $row['id'];} ?></li>
 					<li class='id-area' title='<?php echo $row['code']; ?>'><?php echo $row['code']; ?></li>
