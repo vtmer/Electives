@@ -1,25 +1,27 @@
 <body class='intro-page'>
 		<div class='window-overlay'>
 			<div class='window'>
-				<a href='#' class='window-close-button'>关闭</a>
+				<div class='window-handle'><a href='#' class='window-close-button'>关闭</a></div>
 				<h2 class='window-title'>我要评价</h2>
-				<form action="#" methed='#'>
-					<input type='hidden' value='0' name='interest-assess'/>
-					<input type='hidden' value='1' name='diff-assess'/>
+				<?php foreach($intro as $row_course):?>
+				<form action="<?php echo site_url('intro/comment').'/'.$row_course['id']; ?>" method='post'>
+					<input type='hidden' value='' name='interest-assess' id='interest-assess'/>
+					<input type='hidden' value='' name='diff-assess' id='diff-assess'/>
 					<ul class='data-list'>
-						<li><span class='item-desc'>趣味性</span><span class='star-assess star-5'>星级评价</span></li>
-						<li><span class='item-desc'>考试难度</span><span class='star-assess star-2'>星级评价</span></li>
-						<li><span class='item-desc'><label for='test-way'>考试方式</label></span><input type='' name='test-way' id='test-way' /></li>
-						<li><span class='item-desc'><label for='your-comment'>课程评价</label></span><textarea name='your-comment' id='your-comment'></textarea></li>
+						<li><span class='item-desc'>趣味性</span><span class='clearfix star-assess interest-assess'><a href='#' title='1星'></a><a href='#' title='2星'></a><a href='#' title='3星'></a><a href='#' title='4星'></a><a href='#' title='5星'></a></span></li>
+						<li><span class='item-desc'>考试难度</span><span class='clearfix star-assess diff-assess'><a href='#' title='1星'></a><a href='#' title='2星'></a><a href='#' title='3星'></a><a href='#' title='4星'></a><a href='#' title='5星'></a></span></li>
+						<li><span class='item-desc'><label for='test-way'>考试方式</label></span><input type='' name='test-way' id='test-way' value=''/></li>
+						<li><span class='item-desc'><label for='your-comment'>课程评价</label></span><textarea name='your-comment' id='your-comment' value=''></textarea></li>
 						<li><span class='item-desc'></span><button type='submit' class='orange-button'>发布评价</button></li>
 					</ul>
 				</form>
+			<?php endforeach;?>
 			</div>
 		</div>
 		<div class='header'>
 			<div class="header-inner">
 				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
-				<form action='<?php echo site_url('search'); ?>' method='post' class='search'>
+				<form action='<?php echo site_url('search'); ?>' method='get' class='search'>
 					<input type='text' name='keyword' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
 				</form>
 				<a href='#' id='portrait' ><img src='images/portrait.png' /><span class='list-state'></span></a>
@@ -66,7 +68,7 @@
 					<div class='comment-box'>
 						<div class='comment-content'>
 							<img src='images/portrait.png' title='阿猫'/>
-							<h3><?echo $row_comment['kickname'];?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
+							<h3><?php if($row_comment['kickname']) {echo $row_comment['kickname'];} else {echo 'NO NAME';}?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
 							<ul class='data-list'>
 								<li><span class='item-desc'>考试方式</span><?php echo $row_comment['exam_form']; ?></li>
 								<li><span class='item-desc'>课程评价</span><?php echo $row_comment['content']; ?></li>

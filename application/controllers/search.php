@@ -10,7 +10,7 @@ class Search extends CI_Controller
 
 	public function index()
 	{
-		$keywords = $this->input->post('keyword',TRUE);
+		$keywords = $this->input->get('keyword',TRUE); 
 		if($keywords)
 		{
 			$data['search_result'] = $this->course_model->search($keywords);
@@ -28,10 +28,6 @@ class Search extends CI_Controller
 			{
 				$data['num'] = 0;
 			}
-			/*if($data['search_result'] == null)
-			{
-				$data['']
-			}*/
 		}
 		else if($keywords == null)
 		{

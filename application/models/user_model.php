@@ -14,12 +14,20 @@ class User_model extends CI_Model
 
 	public function insert($user_info,$password)
 	{
-		$this->db->insert('user',array(
+		$query = $this->db->insert('user',array(
 				'student_id' => $user_info['stu_id'],
 				'password' => md5($password),
 				'campus' => $user_info['campus'],
 				'grade' => $user_info['grade']
 		));
+		if($query)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 
 	public function auth($username,$password)
@@ -110,6 +118,30 @@ class User_model extends CI_Model
 			{
 				return FALSE;
 			}
+		}
+	}
+
+	public function insert_comment($course_id,$interest,$exam,$way,$content)
+	{
+		$user_id = $this->session->userdata('user_id');
+		$stu_id = $this->session->userdata('stu_id');
+		$data = $this->get_msg($stu_id);
+		$query = $this->db->insert('comment',array(
+				'course_id' => $course_id,
+				'user_id' => $user_id,
+				'kickname' => $data->kickname,
+				'content' => $content,
+				'exam_form' => $way,
+				'interest_grade' => $interest,
+				'exam_grade' => $exam
+			));
+		if($query)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
 		}
 	}
 
