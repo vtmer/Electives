@@ -87,9 +87,10 @@ class User_model extends CI_Model
 
 	}
 
-	public function cancel_favor($collect_id)
+
+	public function cancel_favor($user_id,$course_id)
 	{
-		$query = $this->db->delete('collection',array('id' => $collect_id));
+		$query = $this->db->delete('collection',array('user_id' => $user_id,'course_id' => $course_id));
 		if($query)
 		{
 			return TRUE;
@@ -103,21 +104,30 @@ class User_model extends CI_Model
 	public function add_favor($user_id,$course_id)
 	{
 		$query_only = $this->db->get_where('collection',array('user_id' => $user_id,'course_id' => $course_id));
-		if($query_only->num_rows > 0)
-		{
-			return 'repeat';
-		}
-		else if($query_only->num_rows == 0)
+		if($query_only->num_rows() == 0)
 		{
 			$query = $this->db->insert('collection',array('user_id' => $user_id,'course_id' => $course_id));
 			if($query)
 			{
 				return TRUE;
 			}
-			else
-			{
-				return FALSE;
-			}
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
+	public function get_grade($course_id)
+	{
+		$query = $this->db->get_where('course',array('id' => $course_id));
+		if($query->num_rows() == 1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return FALSE;
 		}
 	}
 
@@ -125,7 +135,21 @@ class User_model extends CI_Model
 	{
 		$user_id = $this->session->userdata('user_id');
 		$stu_id = $this->session->userdata('stu_id');
-		$data = $this->get_msg($stu_id);
+		$data = $this->get_msg($stu_id);//获取评论的用户信息
+		//获取该课程的各星级评价
+		$data_course = $this->get_grade($course_id);
+		$interest_grade = $data_course->interest_grade;
+		$exam_grade = $data_course->exam_grade;
+		$multiple_grade = $data_course->multiple_grade;
+		
+		//更新课程各星级评价
+		$interest_grade = round(($interest_grade + $interest)/2);
+		$exam_grade = round(($exam_grade + $exam)/2);
+		$multiple_grade = round(($interest_grade + $exam_grade)/2);
+		$this->db->where('id',$course_id);
+		$datas = array('interest_grade' => $interest_grade,'exam_grade' => $exam_grade,'multiple_grade' => $multiple_grade);
+		$query_intro = $this->db->update('course',$datas);
+
 		$query = $this->db->insert('comment',array(
 				'course_id' => $course_id,
 				'user_id' => $user_id,
@@ -135,7 +159,7 @@ class User_model extends CI_Model
 				'interest_grade' => $interest,
 				'exam_grade' => $exam
 			));
-		if($query)
+		if($query && $query_intro)
 		{
 			return TRUE;
 		}

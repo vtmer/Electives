@@ -155,7 +155,7 @@
 				<ul class='data-list'>
 					<li><span class='item-desc'>综合星级</span><span class='star-assess star-<?php echo $row_course['multiple_grade']; ?>'>星级评价</span></li>
 					<li><span class='item-desc'>趣味性</span><span class='star-assess star-<?php echo $row_course['interest_grade']; ?>'>星级评价</span></li>
-					<li><span class='item-desc'>考试难度</span><span class='star-assess star-<?php echo $row_course	['exam_grade']; ?>'>星级评价</span></li>
+					<li><span class='item-desc'>考试难度</span><span class='star-assess star-<?php echo $row_course['exam_grade']; ?>'>星级评价</span></li>
 				</ul>
 				<ul class='sidebar-list'>
 					<li><a href='#' class='comment-class'>我要评价</a></li>

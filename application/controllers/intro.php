@@ -37,6 +37,7 @@ class Intro extends CI_Controller
 			if($this->user_model->insert_comment($course_id,$interest,$exam,$way,$content))
 			{
 				echo "<script>alert('评论成功！');</script>";
+				redirect('intro/index/'.$course_id.'','refresh');
 			}
 		}
 	}
