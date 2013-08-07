@@ -123,9 +123,9 @@ class Login extends CI_Controller
 
 	public function load_page()
 	{
-		$header = array('title' => 'index','css_file' => 'index.css');
+		//$header = array();
 		$footer = array('js_file' => 'index.js');
-		$this->parser->parse('template/header',$header);
+		//$this->parser->parse('template/header',$header);
 		$this->load->view('index');
 		$this->parser->parse('template/footer',$footer);
 	}	

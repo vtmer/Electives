@@ -169,6 +169,35 @@ class User_model extends CI_Model
 		}
 	}
 
+	public function update_img($img_name)
+	{
+		$user_id = $this->session->userdata('user_id');
+		$this->db->where('id',$user_id);
+		$data = array('img' => $img_name);
+		$this->db->update('user',$data);
+	}
+
+	public function update_name($name)
+	{
+		$user_id = $this->session->userdata('user_id');
+		$this->db->where('id',$user_id);
+		$data = array('kickname' => $name);
+		$query_user = $this->db->update('user',$data);
+		
+		$this->db->where('user_id',$user_id);
+		$data = array('kickname' => $name);
+		$query_comment = $this->db->update('comment',$data);
+		if($query_user && $query_comment)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+		
+	}
+
 }
 
 ?>

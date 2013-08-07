@@ -1,4 +1,4 @@
-<body class='intro-page'>
+<!--<body class='intro-page'>-->
 		<div class='window-overlay'>
 			<div class='window'>
 				<div class='window-handle'><a href='#' class='window-close-button'>关闭</a></div>
@@ -18,7 +18,7 @@
 			<?php endforeach;?>
 			</div>
 		</div>
-		<div class='header'>
+		<!--<div class='header'>
 			<div class="header-inner">
 				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
 				<form action='<?php echo site_url('search'); ?>' method='get' class='search'>
@@ -32,7 +32,7 @@
 					<span class='arrow'></span>
 				</ul>
 			</div>
-		</div>
+		</div>-->
 		<?php foreach($intro as $row_course):?>
 		<div class='crumbs wrap clearfix'>
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><a href='<?php echo site_url('lists'); ?>'>课程列表<span class='arrow'></span></a><strong><?php echo $row_course['name']; ?></strong>
@@ -67,7 +67,7 @@
 
 					<div class='comment-box'>
 						<div class='comment-content'>
-							<img src='images/portrait.png' title='阿猫'/>
+							<img src='<?php echo base_url('avatar').'/'.$this->session->userdata('img'); ?>' title='阿猫'/>
 							<h3><?php if($row_comment['kickname']) {echo $row_comment['kickname'];} else {echo 'NO NAME';}?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
 							<ul class='data-list'>
 								<li><span class='item-desc'>考试方式</span><?php echo $row_comment['exam_form']; ?></li>

@@ -1,4 +1,4 @@
-<body class='favorite-page'>
+<!--<body class='favorite-page'>
 		<div class='header'>
 			<div class="header-inner">
 				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
@@ -13,7 +13,7 @@
 					<span class='arrow'></span>
 				</ul>
 			</div>
-		</div>
+		</div>-->
 		<div class='crumbs wrap clearfix'>
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><strong>我的收藏</strong>
 		</div>

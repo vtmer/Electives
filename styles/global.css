@@ -80,7 +80,7 @@ a:hover{
 	height:100%;
 	overflow: hidden;
 	text-indent: -9999px;
-	background:url(../images/star.png) no-repeat 100% 50%;
+	background:url('../images/star.png') no-repeat 100% 50%;
 }
 .star-0{
 	background-position: 100% 50%;
