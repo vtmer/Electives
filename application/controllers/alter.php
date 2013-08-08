@@ -23,6 +23,7 @@ class Alter extends CI_Controller
 		{
 			$error = $this->upload->display_errors();
 			echo "<script>alert('上传失败！".$error."');</script>";
+			redirect('alter','refresh');
 		}
 		else
 		{

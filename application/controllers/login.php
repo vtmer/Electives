@@ -41,6 +41,7 @@ class Login extends CI_Controller
 					'stu_id' => $result_msg->student_id,
 					'campus' => $result_msg->campus,
 					'grade' => $result_msg->grade,
+					'img' => $result_msg->img,
 					'is_logged_in' => TRUE
 				);
 				$this->session->set_userdata($data);
@@ -73,6 +74,7 @@ class Login extends CI_Controller
 						'stu_id' => $result_msg->student_id,
 						'campus' => $user_info['campus'],
 						'grade' => $user_info['grade'],	
+						'img' => $result_msg->img,
 						'is_logged_in' => TRUE
 					);	 
 					$this->session->set_userdata($data);

@@ -157,10 +157,43 @@
 					<li><span class='item-desc'>趣味性</span><span class='star-assess star-<?php echo $row_course['interest_grade']; ?>'>星级评价</span></li>
 					<li><span class='item-desc'>考试难度</span><span class='star-assess star-<?php echo $row_course['exam_grade']; ?>'>星级评价</span></li>
 				</ul>
+				<script>
+				function show_share()
+				{
+					$('.bshare-custom').fadeIn(400);
+				}
+				</script>
 				<ul class='sidebar-list'>
 					<li><a href='#' class='comment-class'>我要评价</a></li>
 					<li><a href='<?php echo site_url('favorite/add').'/'.$this->session->userdata('user_id').'/'.$row_course['id']; ?>' class='favorite-class'>收藏</a></li>
-					<li><a href='#' class='share-class'>分享</a></li>
-				</ul>
+					<li><a href='#' class='share-class' onclick='show_share();'>分享</a></li>
+					</ul>
+				
+				<div class="bshare-custom" hidden>
+					<a title="分享到QQ空间" class="bshare-qzone"></a>
+					<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+					<a title="分享到人人网" class="bshare-renren"></a>
+					<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+					<a title="分享到豆瓣" class="bshare-douban"></a>
+					<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+					<span class="BSHARE_COUNT bshare-share-count">0</span>
+				</div>
+			
 			</div>
 		</div>
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js">
+		</script>
+		<script type="text/javascript" charset="utf-8">
+				bShare.addEntry({
+   		    	title: "#工大选修#",
+   				url: window.location.herf,
+   			 	summary: "我在[工大选修]发现一门不错的选修课《<?php echo $row_course['name']; ?>》哦！你也一起来看看吧！@Vtmer维生数工作室",
+   				pic: ""
+			});
+		</script>
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js">
+		
+		</script>
+		
+		
+		
