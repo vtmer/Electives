@@ -1,20 +1,4 @@
-<!--<body class='favorite-page'>
-		<div class='header'>
-			<div class="header-inner">
-				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
-				<form action='<?php echo site_url('search'); ?>' method='get' class='search'>
-					<input type='text' name='keyword' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
-				</form>
-				<a href='#' id='portrait' ><img src='images/portrait.png' /><span class='list-state'></span></a>
-				<ul class='drop-list'>
-					<li><a href='<?php echo site_url('favorite'); ?>'>我的收藏</a></li>
-					<li><a href='<?php echo site_url('alter'); ?>'>修改资料</a></li>
-					<li><a href='<?php echo site_url('login/logout'); ?>'>退出登录</a></li>
-					<span class='arrow'></span>
-				</ul>
-			</div>
-		</div>-->
-		<div class='crumbs wrap clearfix'>
+	<div class='crumbs wrap clearfix'>
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><strong>我的收藏</strong>
 		</div>
 

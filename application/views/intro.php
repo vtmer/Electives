@@ -83,70 +83,7 @@
 					</div>
 					<?php endforeach;?>
 					
-					<!--<div class='comment-box'>
-						<div class='comment-content'>
-							<img src='images/portrait2.png' title='阿猫'/>
-							<h3>什么什么名字<span class='comment-time'>2001.12.12</span></h3>
-							<ul class='data-list'>
-								<li><span class='item-desc'>考试方式</span>论文</li>
-								<li><span class='item-desc'>课程评价</span>什么什么</li>
-							</ul>
-						</div>
-						<div class="comment-sidebar">
-							<ul class='data-list'>
-								<li><span class='item-desc'>趣味性</span><span class='star-assess star-1'>星级评价</span></li>
-								<li><span class='item-desc'>考试难度</span><span class='star-assess star-2'>星级评价</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class='comment-box'>
-						<div class='comment-content'>
-							<img src='images/portrait.png' title='阿猫'/>
-							<h3>什么什么名字<span class='comment-time'>2001.12.12</span></h3>
-							<ul class='data-list'>
-								<li><span class='item-desc'>考试方式</span>论文</li>
-								<li><span class='item-desc'>课程评价</span>什么什么什么什么什么什么什么什么什么什么什么什</li>
-							</ul>
-						</div>
-						<div class="comment-sidebar">
-							<ul class='data-list'>
-								<li><span class='item-desc'>趣味性</span><span class='star-assess star-2'>星级评价</span></li>
-								<li><span class='item-desc'>考试难度</span><span class='star-assess star-3'>星级评价</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class='comment-box'>
-						<div class='comment-content'>
-							<img src='images/portrait2.png' title='阿猫'/>
-							<h3>什么什么名字<span class='comment-time'>2001.12.12</span></h3>
-							<ul class='data-list'>
-								<li><span class='item-desc'>考试方式</span>论文</li>
-								<li><span class='item-desc'>课程评价</span>什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么</li>
-							</ul>
-						</div>
-						<div class="comment-sidebar">
-							<ul class='data-list'>
-								<li><span class='item-desc'>趣味性</span><span class='star-assess star-5'>星级评价</span></li>
-								<li><span class='item-desc'>考试难度</span><span class='star-assess star-2'>星级评价</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class='comment-box'>
-						<div class='comment-content'>
-							<img src='images/portrait2.png' title='阿猫'/>
-							<h3>什么什么名字<span class='comment-time'>2001.12.12</span></h3>
-							<ul class='data-list'>
-								<li><span class='item-desc'>考试方式</span>论文</li>
-								<li><span class='item-desc'>课程评价</span>什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么什么</li>
-							</ul>
-						</div>
-						<div class="comment-sidebar">
-							<ul class='data-list'>
-								<li><span class='item-desc'>趣味性</span><span class='star-assess star-1'>星级评价</span></li>
-								<li><span class='item-desc'>考试难度</span><span class='star-assess star-4'>星级评价</span></li>
-							</ul>
-						</div>
-					</div>-->
+			
 				</div>
 				<a href='#' class='load-more'>加载更多<span>...</span></a>
 				<a href='#' id='go-top'>置顶按钮</a>
@@ -181,18 +118,17 @@
 			
 			</div>
 		</div>
-		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js">
+		<script type="text/javascript" charset="utf-8" src="<?php echo base_url('scripts/buttonLite.js');?>">
 		</script>
 		<script type="text/javascript" charset="utf-8">
 				bShare.addEntry({
    		    	title: "#工大选修#",
    				url: window.location.herf,
-   			 	summary: "我在[工大选修]发现一门不错的选修课《<?php echo $row_course['name']; ?>》哦！你也一起来看看吧！@Vtmer维生数工作室",
+   			 	summary: "我在工大选修发现一门不错的选修课《<?php echo $row_course['name']; ?>》哦！你也一起来看看吧！@Vtmer维生数工作室",
    				pic: ""
 			});
 		</script>
-		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js">
-		
+		<script type="text/javascript" charset="utf-8" src="<?php echo base_url('scripts/bshareC0.js');?>">
 		</script>
 		
 		

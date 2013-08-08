@@ -14,6 +14,7 @@
 				<p><a href="#">关于我们</a><a href="#">联系我们</a></p>
 			</div>
 		</div>
+		
 		<script src="<?php echo base_url('scripts/jquery.js');?>"></script>
 		<script src="<?php echo base_url('scripts/global.js');?>"></script>
 		<script src="<?php echo base_url('scripts');?>/{js_file}"></script>

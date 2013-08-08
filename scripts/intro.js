@@ -31,4 +31,6 @@
 		$('.interest-assess').on('click', 'a', {input : $('#interest-assess')}, assess);
 		$('.diff-assess').on('click', 'a', {input : $('#diff-assess')}, assess);
 	});
+	
 })(jQuery);
+

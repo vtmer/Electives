@@ -30,9 +30,9 @@ class Lists extends CI_Controller
 
 	public function select()
 	{
-		$cam_select = $this->input->post('school-select');
-		$kind_select = $this->input->post('class-select');
-		$assess_select = $this->input->post('assess-select');
+		$cam_select = $this->input->get('school-select');
+		$kind_select = $this->input->get('class-select');
+		$assess_select = $this->input->get('assess-select');
 		
 		$data['courses'] = $this->course_model->filter($cam_select,$kind_select,$assess_select);	
 		$data['cam_select'] = $cam_select;
