@@ -69,30 +69,7 @@
 				</ul>
 				<?php endforeach;?>
 				<?php endif;?>
-				<!--<ul class='clearfix'>
-					<li class='num-area'>123</li>
-					<li class='id-area' title='01137715'>01137715</li>
-					<li class='classname-area' title='由案说法由案说法由案说法由啦啦啦啦啦啦！！！！！！！！'>由案说法由案说法由案说法由啦啦啦啦啦啦！！！！！！！！</li>
-					<li class='assess-area'><span class='star-assess star-4'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-0'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-1'>星级评分</span></li>
-				</ul>
-				<ul class='clearfix'>
-					<li class='num-area'>1234</li>
-					<li class='id-area' title='12345678912'>12345678912</li>
-					<li class='classname-area' title='三维动画制作'>三维动画制作</li>
-					<li class='assess-area'><span class='star-assess star-5'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-2'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-3'>星级评分</span></li>
-				</ul>
-				<ul class='clearfix'>
-					<li class='num-area'>123456</li>
-					<li class='id-area' title='123456789123'>123456789123</li>
-					<li class='classname-area' title='由案说法由案说法由案说法由案说法由案说法'>由案说法由案说法由案说法由案说法由案说法</li>
-					<li class='assess-area'><span class='star-assess star-4'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-0'>星级评分</span></li>
-					<li class='assess-area'><span class='star-assess star-1'>星级评分</span></li>
-				</ul>-->
+			
 				<a href='#' id='go-top'>置顶按钮</a>
 			</div>
 			<a href='#' class='load-more'>加载更多<span>...</span></a>

@@ -11,7 +11,11 @@
 				
 					
 					<input type="file" name="userfile" size="20" />
+
 					<button type='submit' class='orange-button'>上传</button>
+					<div>
+						<strong>仅支持JPG、GIF、PNG图片文件，且文件小于1M</strong>
+					</div>
 				</form>
 			</div>
 			<div class='alter-profile'>

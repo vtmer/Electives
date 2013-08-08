@@ -13,8 +13,8 @@ class Alter extends CI_Controller
 		$config['upload_path'] = './avatar/';	
 		$config['allowed_types'] = 'jpg|gif|png';
 		$config['max_size'] = '1000';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '1024';
+		$config['max_width'] = '1800';
+		$config['max_height'] = '1600';
 		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload',$config);
@@ -22,7 +22,7 @@ class Alter extends CI_Controller
 		if(!$this->upload->do_upload())
 		{
 			$error = $this->upload->display_errors();
-			echo "<script>alert('上传失败！".$error."');</script>";
+			echo "<script>alert('上传失败！请上传小于1M的JPG、GIF、PNG的图片文件');</script>";
 			redirect('alter','refresh');
 		}
 		else

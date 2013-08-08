@@ -18,21 +18,7 @@
 			<?php endforeach;?>
 			</div>
 		</div>
-		<!--<div class='header'>
-			<div class="header-inner">
-				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
-				<form action='<?php echo site_url('search'); ?>' method='get' class='search'>
-					<input type='text' name='keyword' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
-				</form>
-				<a href='#' id='portrait' ><img src='images/portrait.png' /><span class='list-state'></span></a>
-				<ul class='drop-list'>
-					<li><a href='<?php echo site_url('favorite'); ?>'>我的收藏</a></li>
-					<li><a href='<?php echo site_url('alter'); ?>'>修改资料</a></li>
-					<li><a href='<?php echo site_url('login/logout'); ?>'>退出登录</a></li>
-					<span class='arrow'></span>
-				</ul>
-			</div>
-		</div>-->
+
 		<?php foreach($intro as $row_course):?>
 		<div class='crumbs wrap clearfix'>
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><a href='<?php echo site_url('lists'); ?>'>课程列表<span class='arrow'></span></a><strong><?php echo $row_course['name']; ?></strong>
@@ -97,7 +83,7 @@
 				<script>
 				function show_share()
 				{
-					$('.bshare-custom').fadeIn(400);
+					$('.bshare-custom').fadeIn(1000);
 				}
 				</script>
 				<ul class='sidebar-list'>
@@ -115,7 +101,7 @@
 					<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
 					<span class="BSHARE_COUNT bshare-share-count">0</span>
 				</div>
-			
+
 			</div>
 		</div>
 		<script type="text/javascript" charset="utf-8" src="<?php echo base_url('scripts/buttonLite.js');?>">
