@@ -50,8 +50,10 @@ class Login extends CI_Controller
 			}
 			else
 			{
-				echo "<script>alert('密码不正确！');</script>";
-				redirect('login','refresh');
+				$data = array('error' => TRUE,'content' => '密码不正确！');
+				$this->load_page($data);
+				$url = site_url('login');
+				header("refresh:2;url=".$url."");	
 			}
 		}		
 		else
@@ -88,20 +90,25 @@ class Login extends CI_Controller
 					{*/
 					if($this->user_model->insert($user_info,$password))
 					{
-						echo "<script>alert('首次登录，先完善资料哈！');</script>";
-						redirect('alter','refresh');
+						$data = array('error' => TRUE,'content' => '首次登录，先完善资料哈！');
+						$this->load_page($data);
+						$url = site_url('alter');
+						header("refresh:2;url=".$url."");	
 					}
 						//print_r($array);
 				
 				}
 				else
 				{
-					echo "<script>alert('帐号或密码错误！');</script>";
-					redirect('login','refresh');
+					$data = array('error' => TRUE,'content' => '帐号或密码错误！');
+					$this->load_page($data);
+					$url = site_url('login');
+					header("refresh:2;url=".$url."");	
 				}
 			}
 		}
 	}
+
 
 	public function logout()
 	{
@@ -123,12 +130,12 @@ class Login extends CI_Controller
 		return $this->session->userdata('is_logged_in');
 	}	
 
-	public function load_page()
+	public function load_page($data = false)
 	{
 		//$header = array();
 		$footer = array('js_file' => 'index.js');
 		//$this->parser->parse('template/header',$header);
-		$this->load->view('index');
+		$this->load->view('index',$data);
 		$this->parser->parse('template/footer',$footer);
 	}	
 }

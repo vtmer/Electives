@@ -19,6 +19,12 @@
 			</div>
 		</div>
 
+		<?php if(isset($tips)):?>
+	
+		<div id="freeow-message" hidden><?php echo $content;?></div>
+		<div id="freeow" class="freeow freeow-top-right"></div>
+		<?php endif;?>
+
 		<?php foreach($intro as $row_course):?>
 		<div class='crumbs wrap clearfix'>
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><a href='<?php echo site_url('lists'); ?>'>课程列表<span class='arrow'></span></a><strong><?php echo $row_course['name']; ?></strong>

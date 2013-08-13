@@ -12,12 +12,7 @@ class Intro extends CI_Controller
 
 	public function index($course_id)
 	{
-		$user_id = $this->session->userdata('user_id');
-		$stu_id = $this->session->userdata('stu_id');
-		$data['intro'] = $this->course_model->show_intro($course_id);
-		$data['comment'] = $this->course_model->show_comment($course_id);
-		//$data['user'] = $this->user_model->show_user($user_id);
-		$this->load_page($data);		
+		$this->load_page($course_id);		
 	}
 
 	public function comment($course_id)
@@ -29,21 +24,32 @@ class Intro extends CI_Controller
 		//echo "<script>alert('".$interest." ".$exam." ".$way." ".$content."');</script>";
 		if($interest == null || $exam == null || $way == null || $content == null)
 		{
-			echo "<script>alert('请认真填写，不要留空！');</script>";
+			$data = array('tips' => TRUE,'content' => '请认真填写，不要留空！');
+			$this->load_page($course_id,$data);
+			//$url = site_url('favorite');
+			//header("refresh:2;url=".$url."");	
 			
 		}
 		else if($interest!=='' && $exam!==''  && $way!==''  && $content!=='' )
 		{
 			if($this->user_model->insert_comment($course_id,$interest,$exam,$way,$content))
 			{
-				echo "<script>alert('评论成功！');</script>";
-				redirect('intro/index/'.$course_id.'','refresh');
+				//redirect('intro/index/'.$course_id.'','refresh');
+				$data = array('tips' => TRUE,'content' => '评论成功！');
+				$this->load_page($course_id,$data);
+				$url = site_url('intro/index/'.$course_id.'');
+				header("refresh:2;url=".$url."");	
 			}
 		}
 	}
 
-	public function load_page($data)
+	public function load_page($course_id,$data = false)
 	{
+		$user_id = $this->session->userdata('user_id');
+		$stu_id = $this->session->userdata('stu_id');
+		$data['intro'] = $this->course_model->show_intro($course_id);
+		$data['comment'] = $this->course_model->show_comment($course_id);
+
 		$header = array('title' => 'intro','css_file' => 'intro.css');
 		$footer = array('js_file' => 'intro.js');
 		$this->parser->parse('template/header',$header);

@@ -2,6 +2,12 @@
 			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><strong>我的收藏</strong>
 		</div>
 
+		<?php if(isset($tips)):?>
+	
+		<div id="freeow-message" hidden><?php echo $content;?></div>
+		<div id="freeow" class="freeow freeow-top-right"></div>
+		<?php endif;?>
+
 		<div class='main wrap'>
 			
 			<?php if(!$status):?>

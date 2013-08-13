@@ -22,12 +22,24 @@ class Alter extends CI_Controller
 		if(!$this->upload->do_upload())
 		{
 			$error = $this->upload->display_errors();
-			echo "<script>alert('上传失败！请上传小于1M的JPG、GIF、PNG的图片文件');</script>";
-			redirect('alter','refresh');
+			$data = array('tips' => TRUE,'content' => '上传失败！请上传小于1M的JPG、GIF、PNG的图片文件！');
+
+			$user_id = $this->session->userdata('user_id');
+			$data['info'] = $this->user_model->show_user($user_id);
+			
+			$this->load_page($data);
+			$url = site_url('alter');
+			header("refresh:2;url=".$url."");	
 		}
 		else
 		{
-			echo "<script>alert('上传成功！');</script>";
+			$data = array('tips' => TRUE,'content' => '上传成功！');
+			
+			$user_id = $this->session->userdata('user_id');
+			$data['info'] = $this->user_model->show_user($user_id);
+			
+			$this->load_page($data);
+
 			$img_data = array('upload_data' => $this->upload->data());
 			//print_r($img_data);
 			$img_name = $img_data['upload_data']['file_name'];
@@ -36,9 +48,8 @@ class Alter extends CI_Controller
 			$this->session->set_userdata($datas);
 			
 			$this->user_model->update_img($img_name);
-			$user_id = $this->session->userdata('user_id');
-			$data['info'] = $this->user_model->show_user($user_id);
-			redirect('alter','refresh');
+			$url = site_url('alter');
+			header("refresh:2;url=".$url."");	
 		}
 	}
 
@@ -47,13 +58,25 @@ class Alter extends CI_Controller
 		$name = $this->input->post('kickname',TRUE);
 		if($this->user_model->update_name($name))
 		{
-			echo "<script>alert('修改成功！');</script>";
-			redirect('alter','refresh');
+			$data = array('tips' => TRUE,'content' => '修改成功！');
+			
+			$user_id = $this->session->userdata('user_id');
+			$data['info'] = $this->user_model->show_user($user_id);
+			
+			$this->load_page($data);
+			$url = site_url('alter');
+			header("refresh:2;url=".$url."");	
 		}
 		else
 		{
-			echo "<script>alert('修改失败！');</script>";
-			redirect('alter','refresh');
+			$data = array('tips' => TRUE,'content' => '修改失败！');
+			
+			$user_id = $this->session->userdata('user_id');
+			$data['info'] = $this->user_model->show_user($user_id);
+			
+			$this->load_page($data);
+			$url = site_url('alter');
+			header("refresh:2;url=".$url."");	
 		}
 	}
 
@@ -65,7 +88,7 @@ class Alter extends CI_Controller
 		
 	}
 
-	public function load_page($data)
+	public function load_page($data = false)
 	{
 		$header = array('title' => 'alter','css_file' => 'alter.css');
 		$footer = array();

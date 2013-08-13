@@ -18,6 +18,13 @@
 					</div>
 				</form>
 			</div>
+
+		<?php if(isset($tips)):?>
+	
+		<div id="freeow-message" hidden><?php echo $content;?></div>
+		<div id="freeow" class="freeow freeow-top-right"></div>
+		<?php endif;?>
+
 			<div class='alter-profile'>
 				<h2>修改资料<span>profile</span></h2>
 				

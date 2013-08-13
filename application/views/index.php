@@ -12,6 +12,7 @@
 		<title>index</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/reset.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/global.css');?>" />
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/freeow.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/index.css');?>" />
 	</head>
 
@@ -30,6 +31,15 @@
 			</form>
 			<div class='bg-box'></div>
 		</div>
+
+
+		<?php if(isset($error)):?>
+	
+		<div id="freeow-message" hidden><?php echo $content;?></div>
+		<div id="freeow" class="freeow freeow-top-right"></div>
+		<?php endif;?>
+
+		
 		<div class="intros">
 			<h2>网站介绍</h2>
 			<div class='intro1'>
