@@ -86,12 +86,21 @@
 					<li><span class='item-desc'>趣味性</span><span class='star-assess star-<?php echo $row_course['interest_grade']; ?>'>星级评价</span></li>
 					<li><span class='item-desc'>考试难度</span><span class='star-assess star-<?php echo $row_course['exam_grade']; ?>'>星级评价</span></li>
 				</ul>
+
 				<script>
-				function show_share()
-				{
-					$('.bshare-custom').fadeIn(1000);
+				function show_share(){
+					if(!$('.bshare-custom').is(":visible"))
+					{
+						$('.bshare-custom').fadeIn(1000);
+					}
+					else
+					{
+						$('.bshare-custom').fadeOut(1000);
+					}
 				}
+				 
 				</script>
+				
 				<ul class='sidebar-list'>
 					<li><a href='#' class='comment-class'>我要评价</a></li>
 					<li><a href='<?php echo site_url('favorite/add').'/'.$this->session->userdata('user_id').'/'.$row_course['id']; ?>' class='favorite-class'>收藏</a></li>
