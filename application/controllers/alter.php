@@ -24,9 +24,6 @@ class Alter extends CI_Controller
 			$error = $this->upload->display_errors();
 			$data = array('tips' => TRUE,'content' => '上传失败！请上传小于1M的JPG、GIF、PNG的图片文件！');
 
-			$user_id = $this->session->userdata('user_id');
-			$data['info'] = $this->user_model->show_user($user_id);
-			
 			$this->load_page($data);
 			$url = site_url('alter');
 			header("refresh:2;url=".$url."");	
@@ -34,9 +31,6 @@ class Alter extends CI_Controller
 		else
 		{
 			$data = array('tips' => TRUE,'content' => '上传成功！');
-			
-			$user_id = $this->session->userdata('user_id');
-			$data['info'] = $this->user_model->show_user($user_id);
 			
 			$this->load_page($data);
 
@@ -60,9 +54,6 @@ class Alter extends CI_Controller
 		{
 			$data = array('tips' => TRUE,'content' => '修改成功！');
 			
-			$user_id = $this->session->userdata('user_id');
-			$data['info'] = $this->user_model->show_user($user_id);
-			
 			$this->load_page($data);
 			$url = site_url('alter');
 			header("refresh:2;url=".$url."");	
@@ -70,9 +61,6 @@ class Alter extends CI_Controller
 		else
 		{
 			$data = array('tips' => TRUE,'content' => '修改失败！');
-			
-			$user_id = $this->session->userdata('user_id');
-			$data['info'] = $this->user_model->show_user($user_id);
 			
 			$this->load_page($data);
 			$url = site_url('alter');
@@ -82,14 +70,15 @@ class Alter extends CI_Controller
 
 	public function index()
 	{
-		$user_id = $this->session->userdata('user_id');
-		$data['info'] = $this->user_model->show_user($user_id);
-		$this->load_page($data);	
+		$this->load_page();	
 		
 	}
 
 	public function load_page($data = false)
 	{
+		$user_id = $this->session->userdata('user_id');
+		$data['info'] = $this->user_model->show_user($user_id);
+
 		$header = array('title' => 'alter','css_file' => 'alter.css');
 		$footer = array();
 		$this->parser->parse('template/header',$header);

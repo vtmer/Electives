@@ -1,4 +1,6 @@
-(function($){
+$(document).ready(function(){
+
+	(function($){
 	$(function(){
 		/*生成弹窗
 		--------------------------------------*/ 
@@ -33,4 +35,7 @@
 	});
 	
 })(jQuery);
+	
+});
+
 

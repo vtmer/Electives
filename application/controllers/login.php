@@ -81,13 +81,6 @@ class Login extends CI_Controller
 					);	 
 					$this->session->set_userdata($data);
 					//var_dump($data); //输出session
-					/*if($this->user_model->is_exist($stu_id))
-					{
-						echo "<script>alert('帐号已存在!');</script>";						
-						redirect('lists');
-					}
-					else
-					{*/
 					if($this->user_model->insert($user_info,$password))
 					{
 						$data = array('error' => TRUE,'content' => '首次登录，先完善资料哈！');

@@ -53,9 +53,6 @@ class Lists extends CI_Controller
 				break;
 		}
 		$this->load_page($data);
-		//echo "<script>alert('".$cam_select.$kind_select.$assess_select."');</script>";	
-
-		//$assess_select = $this->input->post('assess_select');
 	}
 }
 
