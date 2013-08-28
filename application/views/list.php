@@ -72,5 +72,5 @@
 			
 				<a href='#' id='go-top'>置顶按钮</a>
 			</div>
-			<a href='#' class='load-more'>加载更多<span>...</span></a>
+			<a href='#footer' class='load-more'>加载更多<span>...</span></a>
 		</div>

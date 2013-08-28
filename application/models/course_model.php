@@ -12,7 +12,7 @@ class Course_model extends CI_Model
 		$limit = array('campus' => $campus,'kind' => $kind);
 		$this->db->where($limit);
 		$this->db->order_by($grade,'desc');
-		$query = $this->db->get('course');
+		$query = $this->db->get('course',2,0);
 		if($query->num_rows() > 0)
 		{
 			return $query->result_array();
@@ -42,11 +42,15 @@ class Course_model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function search($keywords)
+	public function search($keywords,$start = false)
 	{
 		$this->db->like('name',$keywords);
 		$this->db->or_like('code',$keywords);
-		$query = $this->db->get('course');
+		if($start == false)
+		{
+			$start = 0;
+		}
+		$query = $this->db->get('course',2,$start);
 		if($query->num_rows() > 0)
 		{
 			return $query->result_array();
@@ -78,6 +82,19 @@ class Course_model extends CI_Model
 			return FALSE;
 		}
 	}	
+
+	public function more($start)
+	{
+		$query = $this->db->get('course',2,$start);
+		if($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return FALSE;	
+		}
+	}
 }
 
 ?>

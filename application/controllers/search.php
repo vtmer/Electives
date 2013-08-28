@@ -47,6 +47,25 @@ class Search extends CI_Controller
 		$this->load->view('search',$data);
 		$this->parser->parse('template/footer',$footer);
 	}
+
+	public function load_more()
+	{
+		$input = $_GET['page'];
+		$start = $input * 2;
+		preg_match('/keyword=([*])/',uri_string(),$value);
+		$keywords = $value[1];
+		//echo $keywords;
+		$more = $this->course_model->search($keywords,$start);	
+		if($more)
+		{
+			echo json_encode($more);
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
 }
 
 ?>

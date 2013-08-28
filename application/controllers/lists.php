@@ -54,6 +54,22 @@ class Lists extends CI_Controller
 		}
 		$this->load_page($data);
 	}
+
+	public function load_more()
+	{
+		$input = $_GET['page'];
+		$start = $input * 2;
+		$more = $this->course_model->more($start);	
+		if($more)
+		{
+			echo json_encode($more);
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
 }
 
 ?>
