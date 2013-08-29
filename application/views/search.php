@@ -3,7 +3,7 @@
 		</div>
 		<div class='main wrap'>
 			
-			<p class='tips'>您搜索的关键字为 <strong><?php if(isset($none)){echo $none;} else {echo $keyword;} ?></strong> ，共有 <strong><?php echo $num;?></strong> 个结果！</p>
+			<p class='tips'>您搜索的关键字为 <strong class='key-more'><?php if(isset($none)){echo $none;} else {echo $keyword;} ?></strong> ，共有 <strong><?php echo $num;?></strong> 个结果！</p>
 			<div class='class-list'>
 				<ul class='list-title clearfix'>
 					<li class='num-area'>序号</li>
@@ -31,5 +31,5 @@
 	
 				<a href='#' id='go-top'>置顶按钮</a>
 			</div>
-			<a href='#' class='load-more'>加载更多<span>...</span></a>
+			<a href='#footer' class='load-more'>加载更多<span>...</span></a>
 		</div>

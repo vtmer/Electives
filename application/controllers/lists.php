@@ -57,6 +57,12 @@ class Lists extends CI_Controller
 
 	public function load_more()
 	{
+		//$_GET['school-select'] == TRUE ? $campus = $_GET['school-select'] : $campus = $this->session->userdata('campus');
+		//$_GET['class-select'] == TRUE ? $kind = $_GET['kind_select'] : $kind = '人文社会科学类';
+		//$_GET['assess-select'] == TRUE ? $assess = $_GET['assess-select'] : $assess = 'multiple_grade';
+		//$campus = $this->session->userdata('campus');
+		//echo "<script>alert('".$campus."');</script>";
+		
 		$input = $_GET['page'];
 		$start = $input * 2;
 		$more = $this->course_model->more($start);	

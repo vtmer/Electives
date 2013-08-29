@@ -85,6 +85,8 @@ class Course_model extends CI_Model
 
 	public function more($start)
 	{
+		$limit = array('campus' => $this->session->userdata('campus'),'kind' => '人文社会科学类');
+		$this->db->where($limit);
 		$query = $this->db->get('course',2,$start);
 		if($query->num_rows() > 0)
 		{

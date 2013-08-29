@@ -52,9 +52,10 @@ class Search extends CI_Controller
 	{
 		$input = $_GET['page'];
 		$start = $input * 2;
-		preg_match('/keyword=([*])/',uri_string(),$value);
-		$keywords = $value[1];
-		//echo $keywords;
+		//preg_match('/keyword=([*])/',uri_string(),$value);
+		//$keywords = $value[1];
+		//echo "<script>alert('".$start."');</script>";
+		$keywords = $_GET['key'];
 		$more = $this->course_model->search($keywords,$start);	
 		if($more)
 		{
