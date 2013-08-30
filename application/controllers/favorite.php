@@ -68,6 +68,22 @@ class Favorite extends CI_Controller
 		$this->load->view('favorite',$data);
 		$this->parser->parse('template/footer',$footer);
 	}
+
+	public function load_more()
+	{
+		$input = $_GET['page'];
+		$start = $input * 2;
+		
+		$more = $this->user_model->favorite_more($start);
+		if($more)
+		{
+			echo json_encode($more); 
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
 }
 
 ?>

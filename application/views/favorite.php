@@ -13,7 +13,7 @@
 			<?php if(!$status):?>
 			<p class='tips'>您的收藏夹为空！快去<a href='<?php echo site_url('lists'); ?>'><strong> 主页 </strong></a>挑选您喜爱的课程吧！！</p>
 			<?php endif;?>
-			 
+			<input type="hidden" id="user-id" value="<?php echo $this->session->userdata('user_id'); ?>" /> 
 			<div class='class-list'>
 				
 				<ul class='list-title clearfix'>

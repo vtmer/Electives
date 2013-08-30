@@ -66,8 +66,9 @@ class User_model extends CI_Model
 
 	public function get_favorite($user_id)
 	{
+		$this->db->limit(2,0);
 		$query = $this->db->get_where('collection',array('user_id' => $user_id));
-		if($query->num_rows > 0)
+		if($query->num_rows() > 0)
 		{
 			$course_id = array();
 			foreach($query->result_array() as $row)
@@ -85,6 +86,28 @@ class User_model extends CI_Model
 			return null;
 		}
 
+	}
+
+	public function favorite_more($start)
+	{
+		$this->db->limit(2,$start);
+		$query = $this->db->get_where('collection',array('user_id' => $this->session->userdata('user_id')));	
+		if($query->num_rows() > 0)
+		{
+			$course_id = array();
+			foreach($query->result_array() as $row)
+			{
+				array_push($course_id,$row['course_id']);
+			}
+			$this->db->where_in('id',$course_id);
+			$this->db->from('course');
+			$query_list = $this->db->get();
+			return $query_list->result_array();
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 
