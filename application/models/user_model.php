@@ -154,7 +154,7 @@ class User_model extends CI_Model
 		}
 	}
 
-	public function insert_comment($course_id,$interest,$exam,$way,$content)
+	public function insert_comment($course_id,$interest,$exam,$way,$content,$img)
 	{
 		$user_id = $this->session->userdata('user_id');
 		$stu_id = $this->session->userdata('stu_id');
@@ -176,6 +176,7 @@ class User_model extends CI_Model
 		$query = $this->db->insert('comment',array(
 				'course_id' => $course_id,
 				'user_id' => $user_id,
+				'img' => $img,
 				'kickname' => $data->kickname,
 				'content' => $content,
 				'exam_form' => $way,

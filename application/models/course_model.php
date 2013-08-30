@@ -38,6 +38,14 @@ class Course_model extends CI_Model
 
 	public function show_comment($course_id)
 	{
+		$this->db->limit(2,0);
+		$query = $this->db->get_where('comment',array('course_id' => $course_id));
+		return $query->result_array();
+	}
+
+	public function more_comment($course_id,$start)
+	{
+		$this->db->limit(1,$start+1);
 		$query = $this->db->get_where('comment',array('course_id' => $course_id));
 		return $query->result_array();
 	}
@@ -96,6 +104,13 @@ class Course_model extends CI_Model
 		{
 			return FALSE;	
 		}
+	}
+
+	public function upcomment_img($img_name)
+	{
+		$data = array('img' => $img_name);
+		$this->db->where('user_id',$this->session->userdata('user_id'));
+		$this->db->update('comment',$data);
 	}
 }
 

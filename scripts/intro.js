@@ -39,3 +39,21 @@ $(document).ready(function(){
 });
 
 
+var count = 1;
+jQuery(".load-more").bind("click",function(){
+	
+	var id = $('#courseid').val();//session('user_id')
+	//alert(id);
+	jQuery.getJSON("http://localhost/Electives/index.php/intro/load_more",{page:count,courseid:id},function(data){
+		
+		$.each(data,function(i,array){
+			//alert(array.id);
+		var str = "";
+		var str = "<div class='comment-box'><div class='comment-content'><img src='http://localhost/Electives/avatar/"+array.img+"' title='阿猫'/><h3>"+array.kickname+"<span class='comment-time'>"+array.comment_time+"</span></h3><ul class='data-list'><li><span class='item-desc'>考试方式</span>"+array.exam_form+"</li><li><span class='item-desc'>课程评价</span>"+array.content+"</li></ul></div><div class='comment-sidebar'><ul class='data-list'><li><span class='item-desc'>趣味性</span><span class='star-assess star-"+array.interest_grade+"'>星级评价</span></li><li><span class='item-desc'>考试难度</span><span class='star-assess star-"+array.exam_grade+"'>星级评价</span></li></ul></div></div>";
+		jQuery(".comments").append(str);
+		});	
+		
+	
+	count++;
+	});
+})

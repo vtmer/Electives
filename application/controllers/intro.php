@@ -21,6 +21,8 @@ class Intro extends CI_Controller
 		$exam = $this->input->post('diff-assess');
 		$way = $this->input->post('test-way',TRUE);
 		$content = $this->input->post('your-comment',TRUE);
+		$info = $this->user_model->get_msg($this->session->userdata('stu_id'));
+		$img = $info->img;
 
 		if($interest == null || $exam == null || $way == null || $content == null)
 		{
@@ -31,7 +33,7 @@ class Intro extends CI_Controller
 		}
 		else if($interest!=='' && $exam!==''  && $way!==''  && $content!=='' )
 		{
-			if($this->user_model->insert_comment($course_id,$interest,$exam,$way,$content))
+			if($this->user_model->insert_comment($course_id,$interest,$exam,$way,$content,$img))
 			{
 				$data = array('tips' => TRUE,'content' => '评论成功！');
 				$this->load_page($course_id,$data);
@@ -53,6 +55,23 @@ class Intro extends CI_Controller
 		$this->parser->parse('template/header',$header);
 		$this->load->view('intro',$data);
 		$this->parser->parse('template/footer',$footer);
+	}
+
+	public function load_more()
+	{
+		$start = $_GET['page'];
+		$input = $start * 2;
+		$course_id = $_GET['courseid'];
+
+		$more = $this->course_model->more_comment($course_id,$start);
+		if($more)
+		{
+			echo json_encode($more);
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 }
 

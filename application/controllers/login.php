@@ -69,6 +69,9 @@ class Login extends CI_Controller
 					$campus = $user_info['campus'];
 					$grade = $user_info['grade'];
 					
+					//向数据库插入数据
+					$this->user_model->insert($user_info,$password);
+
 					$result_msg = $this->user_model->get_msg($username);
 
 					$data = array(
@@ -81,13 +84,12 @@ class Login extends CI_Controller
 					);	 
 					$this->session->set_userdata($data);
 					//var_dump($data); //输出session
-					if($this->user_model->insert($user_info,$password))
-					{
+
 						$data = array('error' => TRUE,'content' => '首次登录，先完善资料哈！');
 						$this->load_page($data);
 						$url = site_url('alter');
 						header("refresh:2;url=".$url."");	
-					}
+					
 						//print_r($array);
 				
 				}

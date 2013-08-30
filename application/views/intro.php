@@ -5,6 +5,7 @@
 				<h2 class='window-title'>我要评价</h2>
 				<?php foreach($intro as $row_course):?>
 				<form action="<?php echo site_url('intro/comment').'/'.$row_course['id']; ?>" method='post'>
+					<input type='hidden' value='<?php echo $row_course['id'];?>' id='courseid' />
 					<input type='hidden' value='' name='interest-assess' id='interest-assess'/>
 					<input type='hidden' value='' name='diff-assess' id='diff-assess'/>
 					<ul class='data-list'>
@@ -59,7 +60,7 @@
 
 					<div class='comment-box'>
 						<div class='comment-content'>
-							<img src='<?php echo base_url('avatar').'/'.$this->session->userdata('img'); ?>' title='阿猫'/>
+							<img src='<?php echo base_url('avatar').'/'.$row_comment['img']; ?>' title='阿猫'/>
 							<h3><?php if($row_comment['kickname']) {echo $row_comment['kickname'];} else {echo 'NO NAME';}?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
 							<ul class='data-list'>
 								<li><span class='item-desc'>考试方式</span><?php echo $row_comment['exam_form']; ?></li>
@@ -77,7 +78,7 @@
 					
 			
 				</div>
-				<a href='#' class='load-more'>加载更多<span>...</span></a>
+				<a href='#footer' class='load-more'>加载更多<span>...</span></a>
 				<a href='#' id='go-top'>置顶按钮</a>
 			</div>
 			<div class='main-sidebar'>

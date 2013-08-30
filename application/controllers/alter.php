@@ -6,6 +6,7 @@ class Alter extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('user_model');
+		$this->load->model('course_model');
 	}
 
 	public function do_upload()
@@ -40,8 +41,10 @@ class Alter extends CI_Controller
 
 			$datas = array('img' => $img_name);
 			$this->session->set_userdata($datas);
-			
+			//更新user_model里面img
 			$this->user_model->update_img($img_name);
+			//更新comments里面img
+			$this->course_model->upcomment_img($img_name);
 			$url = site_url('alter');
 			header("refresh:2;url=".$url."");	
 		}
