@@ -46,7 +46,7 @@
 				<?php endforeach;?>
 				<?php endif;?>
 		
-				<a href='#' id='go-top'>置顶按钮</a>
+				<a href='#footer' id='go-top'>置顶按钮</a>
 			</div>
 			<a href='#' class='load-more'>加载更多<span>...</span></a>
 		</div>

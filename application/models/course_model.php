@@ -12,7 +12,8 @@ class Course_model extends CI_Model
 		$limit = array('campus' => $campus,'kind' => $kind);
 		$this->db->where($limit);
 		$this->db->order_by($grade,'desc');
-		$query = $this->db->get('course',2,0);
+		$this->db->limit(1,0);
+		$query = $this->db->get('course');
 		if($query->num_rows() > 0)
 		{
 			return $query->result_array();
@@ -80,6 +81,7 @@ class Course_model extends CI_Model
 		{
 			$this->db->order_by($grade,'desc');
 		}
+		$this->db->limit(1,0);
 		$query = $this->db->get('course');
 		if($query->num_rows() > 0)
 		{
@@ -91,11 +93,13 @@ class Course_model extends CI_Model
 		}
 	}	
 
-	public function more($start)
+	public function more_list($school,$kind,$grade,$start)
 	{
-		$limit = array('campus' => $this->session->userdata('campus'),'kind' => '人文社会科学类');
+		$limit = array('campus' => $school,'kind' => $kind);
 		$this->db->where($limit);
-		$query = $this->db->get('course',2,$start);
+		$this->db->order_by($grade,'desc');
+		$this->db->limit(1,$start);
+		$query = $this->db->get('course');
 		if($query->num_rows() > 0)
 		{
 			return $query->result_array();

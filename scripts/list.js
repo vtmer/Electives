@@ -39,9 +39,12 @@
 
 
 var count = 1;
-jQuery(".load-more").bind("click",function(){
-	
-	jQuery.getJSON("http://localhost/Electives/index.php/lists/load_more",{page:count},function(data){
+jQuery(".load-more").on("click",function(){
+	var sch = $('#school-select').val();
+	var kin = $('#class-select').val();
+	var gra = $('#assess-select').val();
+	//alert(school+kind+grade);
+	jQuery.getJSON("http://localhost/Electives/index.php/lists/load_more",{page:count,school:sch,kind:kin,grade:gra},function(data){
 		
 		$.each(data,function(i,array){
 			//alert(array.id);
