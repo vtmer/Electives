@@ -70,6 +70,14 @@ class Course_model extends CI_Model
 		}
 	}
 
+	public function search_num($keywords)
+	{
+		$this->db->like('name',$keywords);
+		$this->db->or_like('code',$keywords);
+		$query = $this->db->get('course');
+		return $query->num_rows();
+	}
+
 	public function filter($campus = false,$kind = false,$grade = false)
 	{
 		if($campus&&$kind)

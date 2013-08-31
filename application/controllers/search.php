@@ -14,6 +14,7 @@ class Search extends CI_Controller
 		if($keywords)
 		{
 			$data['search_result'] = $this->course_model->search($keywords);
+			$data['search_num'] = $this->course_model->search_num($keywords);
 			$data['keyword'] = $keywords;
 			$i = 0;
 			if($data['search_result'])
