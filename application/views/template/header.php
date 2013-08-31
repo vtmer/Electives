@@ -20,7 +20,7 @@
 	<div class='header'>
 			<div class="header-inner">
 				<a href='<?php echo site_url('lists'); ?>' class='logo'>工大选修</a>
-				<form action='<?php echo site_url('search'); ?>' method='get' class='search'>
+				<form action='<?php echo site_url('search'); ?>' method='get' class='search' name='searching'>
 					<input type='text' name='keyword' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
 				</form>
 				<a href='#' id='portrait' ><img src='<?php echo base_url('avatar').'/'.$this->session->userdata('img'); ?>' /><span class='list-state'></span></a>

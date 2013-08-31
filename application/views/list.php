@@ -1,5 +1,5 @@
 		<div class='crumbs wrap clearfix'>
-			<a href='<?php echo site_url('lists'); ?>'>主页<span class='arrow'></span></a><strong>课程列表</strong>
+			<a href='<?php echo site_url('lists'); ?>' id="index">主页<span class='arrow'></span></a><strong>课程列表</strong>
 		</div>
 		<div class='main wrap'>
 			<form class='select-box clearfix' action="<?php echo site_url('lists/select'); ?>" method="get" >

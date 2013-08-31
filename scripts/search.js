@@ -1,8 +1,10 @@
 var count = 1;
 jQuery(".load-more").bind("click",function(){
 	var keyword = $('.key-more').html();
-	
-	jQuery.getJSON("http://localhost/Electives/index.php/search/load_more",{page:count,key:keyword},function(data){
+	var action = document.searching.attributes["action"].value;
+	alert(action);
+	var url = action+"/load_more";
+	jQuery.getJSON(url,{page:count,key:keyword},function(data){
 		
 		$.each(data,function(i,array){
 			//alert(array.id);

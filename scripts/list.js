@@ -44,7 +44,10 @@ jQuery(".load-more").on("click",function(){
 	var kin = $('#class-select').val();
 	var gra = $('#assess-select').val();
 	//alert(school+kind+grade);
-	jQuery.getJSON("http://localhost/Electives/index.php/lists/load_more",{page:count,school:sch,kind:kin,grade:gra},function(data){
+	var action = $('#index').attr("href");
+	//alert(action);
+	var url = action + "/load_more";
+	jQuery.getJSON(url,{page:count,school:sch,kind:kin,grade:gra},function(data){
 		
 		$.each(data,function(i,array){
 			//alert(array.id);

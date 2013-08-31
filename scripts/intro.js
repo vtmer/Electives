@@ -43,8 +43,13 @@ var count = 1;
 jQuery(".load-more").bind("click",function(){
 	
 	var id = $('#courseid').val();//session('user_id')
-	//alert(id);
-	jQuery.getJSON("http://localhost/Electives/index.php/intro/load_more",{page:count,courseid:id},function(data){
+	var action = document.assessing.attributes["action"].value;
+	var end = action.indexOf("comment");
+	action = action.substr(0,end);
+	var url = action + "load_more";
+	//alert(url);
+
+	jQuery.getJSON(url,{page:count,courseid:id},function(data){
 		
 		$.each(data,function(i,array){
 			//alert(array.id);

@@ -4,7 +4,7 @@
 				<div class='window-handle'><a href='#' class='window-close-button'>关闭</a></div>
 				<h2 class='window-title'>我要评价</h2>
 				<?php foreach($intro as $row_course):?>
-				<form action="<?php echo site_url('intro/comment').'/'.$row_course['id']; ?>" method='post'>
+				<form action="<?php echo site_url('intro/comment').'/'.$row_course['id']; ?>" method='post' name='assessing'>
 					<input type='hidden' value='<?php echo $row_course['id'];?>' id='courseid' />
 					<input type='hidden' value='' name='interest-assess' id='interest-assess'/>
 					<input type='hidden' value='' name='diff-assess' id='diff-assess'/>

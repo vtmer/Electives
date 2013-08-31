@@ -2,7 +2,13 @@ var count = 1;
 jQuery(".load-more").bind("click",function(){
 	
 	var userid = $('#user-id').val();//session('user_id')
-	jQuery.getJSON("http://localhost/Electives/index.php/favorite/load_more",{page:count},function(data){
+	var action = document.searching.attributes["action"].value;
+	var end = action.indexOf("search");
+	action = action.substr(0,end);
+	var url = action + "favorite/load_more";
+	//alert(url);
+
+	jQuery.getJSON(url,{page:count},function(data){
 		
 		$.each(data,function(i,array){
 			//alert(array.id);
