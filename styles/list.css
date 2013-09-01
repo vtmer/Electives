@@ -43,6 +43,7 @@ a.select-button:hover,.on-select{
 	background-position: -436px -62px;
 }
 .select-box .drop-list{
+	display: none;
 	width:100%;
 	position: absolute;
 	top:48px;

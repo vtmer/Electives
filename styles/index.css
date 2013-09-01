@@ -83,6 +83,7 @@ button{
 	background:url(../images/warning-info.png) no-repeat;
 }
 #error-info{
+	display: none;
 	color:red;
 }
 /*!intro

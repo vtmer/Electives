@@ -13,12 +13,14 @@
 			});
 			return passOrNot;
 		}
-		//获取焦点时消去错误提示框
+		// 获取焦点时消去错误提示框
 		$form.on('focus blur', 'input', function(){
 			$('#error-info').fadeOut(function(){
 				$(this).remove();
 			});
 		});
+		// 消掉错误提示框
+		$('#error-info').remove();
 		var $submit = $('#submit');
 		$submit.on('click', function(){
 			//首先检查表单是否符合要求
