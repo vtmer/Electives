@@ -23,7 +23,7 @@
 				<form action='<?php echo site_url('search'); ?>' method='get' class='search' name='searching'>
 					<input type='text' name='keyword' placeholder='搜索选修课程...' id='search-block' /><button type='submit' name='' >搜索</button>
 				</form>
-				<a href='#' id='portrait' ><img src='<?php echo base_url('avatar').'/'.$this->session->userdata('img'); ?>' /><span class='list-state'></span></a>
+				<a href='#' id='portrait' ><img src='<?php echo $this->session->userdata('img'); ?>' /><span class='list-state'></span></a>
 				<ul class='drop-list'>
 					<li><a href='<?php echo site_url('favorite'); ?>'>我的收藏</a></li>
 					<li><a href='<?php echo site_url('alter'); ?>'>修改资料</a></li>

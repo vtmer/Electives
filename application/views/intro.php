@@ -60,7 +60,7 @@
 
 					<div class='comment-box'>
 						<div class='comment-content'>
-							<img src='<?php echo base_url('avatar').'/'.$row_comment['img']; ?>' title='阿猫'/>
+							<img src='<?php echo 'http://opcourse-avatars.stor.sinaapp.com/'.$row_comment['img']; ?>' title='阿猫'/>
 							<h3><?php if($row_comment['kickname']) {echo $row_comment['kickname'];} else {echo 'NO NAME';}?><span class='comment-time'><?php echo $row_comment['comment_time']; ?></span></h3>
 							<ul class='data-list'>
 								<li><span class='item-desc'>考试方式</span><?php echo $row_comment['exam_form']; ?></li>

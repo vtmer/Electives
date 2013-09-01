@@ -11,7 +11,8 @@ class Alter extends CI_Controller
 
 	public function do_upload()
 	{
-		$config['upload_path'] = './avatar/';	
+		/*
+		$config['upload_path'] = './imgs/';	
 		$config['allowed_types'] = 'jpg|gif|png';
 		$config['max_size'] = '1000';
 		$config['max_width'] = '1800';
@@ -19,21 +20,60 @@ class Alter extends CI_Controller
 		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload',$config);
+		 */
 
+		if((($_FILES["userfile"]["type"] == "image/gif")||($_FILES["userfile"]["type"] == "image/jpeg")||($_FILES["userfile"]["type"] == "image/png"))&&($_FILES["userfile"]["size"] < 1000000))
+		{
+			switch($_FILES["userfile"]["type"])
+			{
+				case 'image/jpeg':
+					$last = '.jpeg';
+					break;
+				
+				case 'image/gif':
+					$last = '.gif';
+					break;
+
+				case 'image/png':
+					$last = '.png';
+					break;
+			}
+			$file_name = md5($_FILES["userfile"]["name"]).$last;
+			$storage = new SaeStorage();
+			if($storage->upload('avatars',$file_name,$_FILES["userfile"]["tmp_name"]))
+			{
+				//更新user_model里面img
+				$this->user_model->update_img($file_name);
+				//更新comments里面img
+				$this->course_model->upcomment_img($file_name);
+
+				$url = $storage->getUrl('avatars',$file_name);
+
+				$datas = array('img' => $url);
+				$this->session->set_userdata($datas);
+				
+				$data = array('tips' => TRUE,'content' => '上传成功！');
+				$this->load_page($data);
+				$url = site_url('alter');
+				header("refresh:2;url=".$url."");	
+			}
+		}
+
+		/*
 		if(!$this->upload->do_upload())
 		{
 			$error = $this->upload->display_errors();
-			$data = array('tips' => TRUE,'content' => '上传失败！请上传小于1M的JPG、GIF、PNG的图片文件！');
-
+			$data = array('tips' => TRUE,'content' => $error);
+           	$name = $_FILES["userfile"]["name"]; 
+            //$img_data = array('upload_data' => $this->upload->data());
+            echo "<script>alert('".$name."');</script>";
+            //'上传失败！请上传小于1M的JPG、GIF、PNG的图片文件！'
 			$this->load_page($data);
 			$url = site_url('alter');
 			header("refresh:2;url=".$url."");	
 		}
 		else
 		{
-			$data = array('tips' => TRUE,'content' => '上传成功！');
-			
-			$this->load_page($data);
 
 			$img_data = array('upload_data' => $this->upload->data());
 			//print_r($img_data);
@@ -48,6 +88,7 @@ class Alter extends CI_Controller
 			$url = site_url('alter');
 			header("refresh:2;url=".$url."");	
 		}
+		 */
 	}
 
 	public function edit()
