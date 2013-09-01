@@ -57,6 +57,20 @@ class Alter extends CI_Controller
 				$url = site_url('alter');
 				header("refresh:2;url=".$url."");	
 			}
+			else
+			{	
+				$data = array('tips' => TRUE,'content' => '上传失败！请重新上传！');
+				$this->load_page($data);
+				$url = site_url('alter');
+				header("refresh:2;url=".$url."");
+			}
+		}
+		else
+		{
+			$data = array('tips' => TRUE,'content' => '上传失败！请上传小于1M的jpg、gif、png的图片文件');
+			$this->load_page($data);
+			$url = site_url('alter');
+			header("refresh:2;url=".$url."");
 		}
 
 		/*
