@@ -7,7 +7,7 @@
 				<h2>修改头像<span>Head Portrait</span></h2>
 				<form action='<?php echo site_url('alter/do_upload'); ?>' method='post' enctype="multipart/form-data">
 					
-					<img src="<?php echo $this->session->userdata('img'); ?>" alt="" />
+					<img src="<?php echo 'http://opcourse-avatars.stor.sinaapp.com/'.$this->session->userdata('img'); ?>" alt="" />
 				
 					
 					<input type="file" name="userfile" size="20" />

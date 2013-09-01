@@ -49,7 +49,7 @@ class Alter extends CI_Controller
 
 				$url = $storage->getUrl('avatars',$file_name);
 
-				$datas = array('img' => $url);
+				$datas = array('img' => $file_name);
 				$this->session->set_userdata($datas);
 				
 				$data = array('tips' => TRUE,'content' => '上传成功！');
