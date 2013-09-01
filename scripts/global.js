@@ -279,9 +279,7 @@
 			$b.replaceText(textA);
 		},
 		createWindow: function(elem){
-			var $elem = $(elem),
-				width = $elem.innerWidth(),
-				height = $elem.innerHeight();
+			var $elem = $(elem);
 			var $overlay = $('.window-overlay');
 			// $elem.draggable({dragHandle : $('.window-close-button')});
 			$elem.draggable({dragHandle : $('.window-handle')});
@@ -309,6 +307,8 @@
 			$elem
 				.on('locate', function(){
 					var $this = $(this);
+					var height = $this.outerHeight();
+					var width = $this.outerWidth();
 					var wHeight = $(window).height();
 					var wWidth = $(window).width();
 					if(height >= wHeight){
@@ -325,6 +325,7 @@
 				.on('open', function(){
 					// $(this).fadeIn();
 					$overlay.fadeIn();
+					$(this).triggerHandler('locate');
 				})
 				.on('click', function(event){
 					event.stopPropagation();

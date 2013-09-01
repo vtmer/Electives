@@ -427,6 +427,7 @@ a.load-more:active{
 	width:16em;
 }
 .classname-area a{
+	display: block;
 	color:#666;
 }
 .list-page .classname-area,
