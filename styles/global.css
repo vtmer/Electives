@@ -130,6 +130,7 @@ a:hover{
 }
 /*下拉菜单*/
 .drop-list{
+	display: none;
 	position:relative;
 	padding:12px 0;
 	background-color:#34495e;
