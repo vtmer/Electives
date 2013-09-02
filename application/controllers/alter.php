@@ -40,14 +40,27 @@ class Alter extends CI_Controller
 			}
 			$file_name = md5($_FILES["userfile"]["name"]).$last;
 			$storage = new SaeStorage();
-			if($storage->upload('avatars',$file_name,$_FILES["userfile"]["tmp_name"]))
+
+
+			$attr = array('encoding'=>'gzip');	
+			if($storage->upload('avatars',$file_name,$_FILES["userfile"]["tmp_name"],$attr,true))
 			{
+				$f = new SaeFetchurl();
+				$url = $storage->getUrl('avatars',$file_name);
+				$img = $f->fetch($url);
+
+				//压缩图片
+				$exe_img = new SaeImage();
+				$exe_img->setData($img);
+				$exe_img->resizeRatio(0.5);
+				$new_file = $exe_img->exec();
+				//重新写入
+				$storage->write('avatars',$file_name,$new_file);
 				//更新user_model里面img
 				$this->user_model->update_img($file_name);
 				//更新comments里面img
 				$this->course_model->upcomment_img($file_name);
 
-				$url = $storage->getUrl('avatars',$file_name);
 
 				$datas = array('img' => $file_name);
 				$this->session->set_userdata($datas);
