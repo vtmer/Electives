@@ -23,11 +23,14 @@
 		$('#error-info').remove();
 		var $submit = $('#submit');
 		$submit.on('click', function(){
+			var $errorInfo = $('#error-info');
+			if($errorInfo.is(':animated')){
+				return false;
+			}
 			//首先检查表单是否符合要求
 			var passOrNot = checkOut($form);
 			if(!passOrNot){
-				var $errorInfo = $('#error-info');
-				if($errorInfo.length&&!$errorInfo.is(':animated')){
+				if($errorInfo.length){
 					//如果表单不符合要求并且错误信息已经存在
 					//则错误信息闪烁两次
 					$errorInfo
