@@ -45,15 +45,46 @@ class Login extends CI_Controller
 					'is_logged_in' => TRUE
 				);
 				$this->session->set_userdata($data);
-				redirect('lists');
+				//redirect('lists');
+				$datas = array('tips' => TRUE,'content' => '登录成功！');
+				$this->load_page($datas);
+				$url = site_url('lists');
+				header("refresh:1;url=".$url."");	
 
 			}
 			else
 			{
-				$data = array('error' => TRUE,'content' => '密码不正确！');
-				$this->load_page($data);
-				$url = site_url('login');
-				header("refresh:2;url=".$url."");	
+				//数据库帐号与密码不对应，再向eswis.gdut.edu.cn请求
+					$result = $this->curl_msg->check_login($username,$password);
+					if($result['status'])
+					{   
+						//更新数据库密码，与eswis.gdut.edu.cn同步
+						$this->user_model->update_pwd($username,$password);
+						$result_msg_n = $this->user_model->get_msg($username);
+						
+							$data = array(
+								'user_id' => $result_msg_n->id,
+								'stu_id' => $result_msg_n->student_id,
+								'campus' => $result_msg_n->campus,
+								'grade' => $result_msg_n->grade,
+								'img' => $result_msg_n->img,
+								'is_logged_in' => TRUE
+							);
+							$this->session->set_userdata($data);
+						
+							$datas = array('tips' => TRUE,'content' => '登录成功！');
+							$this->load_page($datas);
+							$url = site_url('lists');
+							header("refresh:1;url=".$url."");
+					}
+					else
+					{
+						$datas = array('tips' => TRUE,'content' => '帐号或密码错误！');
+						$this->load_page($datas);
+						$url = site_url('login');
+						header("refresh:1;url=".$url."");	
+					}
+			
 			}
 		}		
 		else
@@ -85,20 +116,20 @@ class Login extends CI_Controller
 					$this->session->set_userdata($data);
 					//var_dump($data); //输出session
 
-						$data = array('error' => TRUE,'content' => '首次登录，先完善资料哈！');
-						$this->load_page($data);
+						$datas = array('tips' => TRUE,'content' => '首次登录，先完善资料哈！');
+						$this->load_page($datas);
 						$url = site_url('alter');
-						header("refresh:2;url=".$url."");	
+						header("refresh:1;url=".$url."");	
 					
 						//print_r($array);
 				
 				}
 				else
 				{
-					$data = array('error' => TRUE,'content' => '帐号或密码错误！');
-					$this->load_page($data);
+					$datas = array('tips' => TRUE,'content' => '帐号或密码错误！');
+					$this->load_page($datas);
 					$url = site_url('login');
-					header("refresh:2;url=".$url."");	
+					header("refresh:1;url=".$url."");	
 				}
 			}
 		}

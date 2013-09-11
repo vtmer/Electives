@@ -36,6 +36,13 @@ class User_model extends CI_Model
 		return ($query->num_rows() == 1) ? TRUE : FALSE;
 	}
 
+	public function update_pwd($username,$password)
+	{
+		$this->db->where('student_id',$username);
+		$data = array('password' => md5($password));
+		$this->db->update('user',$data);
+	}
+
 	public function get_msg($username)
 	{
 		$query = $this->db->get_where('user',array('student_id' => $username));
