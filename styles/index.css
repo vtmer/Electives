@@ -108,23 +108,23 @@ button{
 	overflow:hidden;
 	position:absolute;
 	bottom:0px;
-	padding-top:100px;
+	padding-top: 140px;
 	text-align: center;
 	background:url(../images/css-sprite.png) no-repeat;
 }
 div.intro1{
 	left:0;
-	background-position:88px -170px;
+	background-position: 40px -180px;
 }
 div.intro2{
 	position:static;
 	margin:0 auto;
 	margin-top:60px;
-	background-position:-42px -270px;
+	background-position: -158px -404px;
 }
 div.intro3{
 	right:0;
-	background-position:-170px -370px;
+	background-position: -364px -614px;
 }
 .intros h3{
 	max-width: 100%;
