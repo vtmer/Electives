@@ -10,9 +10,9 @@
 					</a>
 				 
 					<ul class='drop-list' >
-						<li><a href='#' val='大学城校区' class='on-select' >大学城校区</a></li>
-						<li><a href='#' val='龙洞校区'>龙洞校区</a></li>
-						<li><a href='#' val='东风路校区'>东风路校区</a></li>
+						<li><a href='#' val='大学城校区' class='<?php if(isset($cam_select)&&$cam_select == '大学城校区'){echo 'on-select';} ?>' >大学城校区</a></li>
+						<li><a href='#' val='龙洞校区' class='<?php if(isset($cam_select)&&$cam_select == '龙洞校区'){echo 'on-select';} ?>'>龙洞校区</a></li>
+						<li><a href='#' val='东风路校区' class='<?php if(isset($cam_select)&&$cam_select == '东风路校区'){echo 'on-select';} ?>'>东风路校区</a></li>
 						<span class='arrow'></span>
 					</ul>
 				 
@@ -23,9 +23,10 @@
 						<span class='select-text'><?php if(isset($kind_select)) {echo $kind_select;} else {echo '人文社会科学类'; } ?></span><span class='list-state'></span>
 					</a>
 					<ul class='drop-list'>
-						<li><a href='#' val='人文社会科学类' class='on-select'>人文社会科学类</a></li>
-						<li><a href='#' val='工程技术基础类'>工程技术基础类</a></li>
-						<li><a href='#' val='自然科学类'>自然科学类</a></li>
+
+						<li><a href='#' val='人文社会科学类' class='<?php if(isset($kind_select)&&$kind_select == '人文社会科学类'){echo 'on-select';} ?>'>人文社会科学类</a></li>
+						<li><a href='#' val='工程技术基础类' class='<?php if(isset($kind_select)&&$kind_select == '工程技术基础类'){echo 'on-select';} ?>'>工程技术基础类</a></li>
+						<li><a href='#' val='自然科学类'  class='<?php if(isset($kind_select)&&$kind_select == '自然科学类'){echo 'on-select';} ?>'>自然科学类</a></li>
 						<span class='arrow'></span>
 					</ul>
 				</div>
@@ -35,9 +36,9 @@
 						<span class='select-text'>按<?php if(isset($assess_select_cn)) {echo $assess_select_cn;} else {echo '综合星级'; } ?>排序</span><span class='list-state'></span>
 					</a>
 					<ul class='drop-list'>
-						<li><a href='#' val='multiple_grade' class='on-select'>按综合星级排序</a></li>
-						<li><a href='#' val='interest_grade'>按趣味性排序</a></li>
-						<li><a href='#' val='exam_grade'>按考试难度排序</a></li><span class='arrow'></span>
+						<li><a href='#' val='multiple_grade' class='<?php if(isset($assess_select)&&$assess_select == 'multiple_grade'){echo 'on-select';} ?>'>按综合星级排序</a></li>
+						<li><a href='#' val='interest_grade' class='<?php if(isset($assess_select)&&$assess_select == 'interest_grade'){echo 'on-select';} ?>'>按趣味性排序</a></li>
+						<li><a href='#' val='exam_grade' class='<?php if(isset($assess_select)&&$assess_select == 'exam_grade'){echo 'on-select';} ?>'>按考试难度排序</a></li><span class='arrow'></span>
 					</ul>
 				</div>
 				<button type='submit' class='orange-button'>筛选</button>
