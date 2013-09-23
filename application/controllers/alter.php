@@ -151,7 +151,7 @@ class Alter extends CI_Controller
 		$data['info'] = $this->user_model->show_user($user_id);
 
 		$header = array('title' => 'alter','css_file' => 'alter.css');
-		$footer = array();
+		$footer = array('js_file' => 'alter.js');
 		$this->parser->parse('template/header',$header);
 		$this->load->view('alter',$data);
 		$this->parser->parse('template/footer',$footer);
