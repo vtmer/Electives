@@ -3,49 +3,54 @@
 		/*表单验证
 		------------------------*/
 		var $form = $('form');
-		function checkOut($aForm){
-			var passOrNot = true;
-			$aForm.find('input').each(function(){
-				var $this = $(this);
-				if(!$this.val()){
-					passOrNot = false;
+		$form
+		.validate({
+			studentId : {
+				reg : /^3\d{9}$/,
+				target : $('#account'),
+				expect : true,
+				info : '您输入的学号格式不正确!',
+				on : 'change'
+			},
+			isEmpty : {
+				target : $('#password'),
+				expect : false,
+				info : '请输入您的密码!'
+			},
+			submit : {
+				target : $('#submit'),
+				fail : function(infoBox){
+					var $errorInfo = $('#error-info');
+					if($errorInfo.is(':animated')){
+						return false;
+					}
+
+					if($errorInfo.length){
+						//如果表单不符合要求并且错误信息已经存在
+						//则错误信息闪烁两次
+						$errorInfo
+							.fadeOut(100)
+							.fadeIn(100)
+							.fadeOut(100)
+							.fadeIn(100);
+					}else{
+						$('<div class="warning-box" id="error-info"><p>' + infoBox[0] + '</p></div>')
+							.css('display','none')
+							.appendTo($form)
+							.fadeIn(400);
+					}
+
+					return false;
 				}
-			});
-			return passOrNot;
-		}
+			}
+		})
 		// 获取焦点时消去错误提示框
-		$form.on('focus blur', 'input', function(){
+		.on('focus blur', 'input', function(){
 			$('#error-info').fadeOut(function(){
 				$(this).remove();
 			});
 		});
 		// 消掉错误提示框
 		$('#error-info').remove();
-		var $submit = $('#submit');
-		$submit.on('click', function(){
-			var $errorInfo = $('#error-info');
-			if($errorInfo.is(':animated')){
-				return false;
-			}
-			//首先检查表单是否符合要求
-			var passOrNot = checkOut($form);
-			if(!passOrNot){
-				if($errorInfo.length){
-					//如果表单不符合要求并且错误信息已经存在
-					//则错误信息闪烁两次
-					$errorInfo
-						.fadeOut(100)
-						.fadeIn(100)
-						.fadeOut(100)
-						.fadeIn(100);
-				}else{
-					$('<div class="warning-box" id="error-info"><p>错误：账户或密码不能为空！</p></div>')
-						.css('display','none')
-						.appendTo($form)
-						.fadeIn(400);
-				}
-			}
-			return passOrNot;
-		});
 	});
 })(jQuery);

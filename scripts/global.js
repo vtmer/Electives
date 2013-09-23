@@ -111,6 +111,202 @@
 				.on('mouseup', function(){
 					$(this).css('cursor', 'auto');
 				});
+		},
+		// 表单验证
+		validate: function(options){
+			var $me = $(this),
+
+				// 预设默认参数
+				defaults = {
+					isEmpty : {
+						reg : /^\s*$/,
+						expect : true,
+						info : 'It should not be empty!',
+						on : 'change'
+					},
+					isEmail : {
+						reg : /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
+						expect : true,
+						info : 'It is not a Email address!',
+						on : 'change'
+					},
+					isNum : {
+						reg : /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/,
+						expect : true,
+						info : 'It is not a number!',
+						on : 'change'
+					},
+					isInt : {
+						reg : /^\d+$/,
+						expect : true,
+						info : 'It is not a integer!',
+						on : 'change'
+					},
+					submit : {
+						on : 'click'
+					}
+				};
+			// 合并默认选项defaults和参数options以及用户自定义默认选项setup
+			var o = (function (defaults, options) {
+				var obj = {},
+					prop = '',
+					setup = $.fn.validate.setup;
+				for (prop in options) {
+					obj[prop] = {
+						expect : true,
+						on : 'on'
+					};
+					$.extend(obj[prop], defaults[prop], $.fn.validate.setup, options[prop]);
+				}
+				return obj;
+			})(defaults, options);
+
+			// 处理函数
+			// 1.初始化元素的_validation_数据
+			// 2.绑定检测事件
+			function initValidation(elem, rules){
+
+				// 创建对象存储筛选后的规则
+				var elemRules = $.extend({}, rules);
+				delete elemRules.target;
+				delete elemRules.on;
+
+				$(elem).each(function(){
+					var $this = $(this),
+						validation = $this.data('_validation_');
+
+					// 如果该元素存在_validation_数据，则忽略初始化该元素
+					if(validation){
+						return;
+					}
+
+					// 初始化元素的_validation_数据
+					$this.data('_validation_', elemRules);
+					validation = $this.data('_validation_');
+
+					// 设定id
+					validation.id = new Date().getTime();
+
+					// 绑定自定义的事件
+					// 不同type类型，绑定不同的事件处理
+					if ($this.prop('type') !== 'submit') {
+
+						$this.on(rules.on + '.validate', function(){
+							var $this = $(this),
+								validation = $this.data('_validation_'),
+								formValidation = $me.data('_validation_'),
+								index = formValidation.idBox.indexOf(validation.id),
+								match = ( (new RegExp(validation.reg)).test($this.val()) === validation.expect );
+
+							// 检查正则表达式的结果是否与期望的值相匹配
+							if ( match ) {
+
+								// 在表单的_validation_数据中注销掉该元素的id及其提示文本
+								if (index !== -1) {
+									formValidation.idBox.splice(index, 1);
+									formValidation.infoBox.splice(index, 1);
+								}
+
+							} else {
+								
+								// 在表单的_validation_数据中记录下该元素的id及其提示文本
+								if (index === -1) {
+									formValidation.idBox.push(validation.id);
+									formValidation.infoBox.push(validation.info);
+								}
+
+							}
+
+							// 如果存在某些元素不匹配
+							if (formValidation.idBox.length){
+								formValidation.passed = false;
+							} else {
+								formValidation.passed = true;
+							}
+
+							// callback 回调函数
+							// always function
+							if ( typeof validation.always === 'function' ) {
+								validation.always.call(this, match, formValidation.passed, validation.info);
+							}
+							if ( match ) {
+								// succeed function
+								if(typeof validation.succeed === 'function'){
+									return validation.succeed.call(this, formValidation.passed);
+								}
+							}else {
+								// fail function
+								if (typeof validation.fail === 'function'){
+									return validation.fail.call(this, validation.info);
+								}
+							}
+						});
+
+						// 初始化后马上检测
+						$this.triggerHandler(rules.on + '.validate');
+					} else {
+						$this.on(rules.on + '.validate', function(){
+							var $this = $(this),
+								validation = $this.data('_validation_'),
+								formValidation = $me.data('_validation_');
+
+							// callback回调函数	
+							// always function
+							if(typeof validation.always === 'function'){
+								validation.always.call(this, formValidation.passed, formValidation.infoBox);
+							}
+							// 检查表单是否能通过
+							if (formValidation.passed) {
+								// succeed function
+								if(typeof validation.succeed === 'function'){
+									return result = validation.succeed.call(this);
+								}
+							} else {
+								// fail function
+								if(typeof validation.fail === 'function'){
+									return result = validation.fail.call(this, formValidation.infoBox);
+								}
+							}
+						});
+					}
+				});
+
+			}
+
+
+			(function ($me, o) {
+				// 初始化表单的_validation_数据
+				$me.data('_validation_', {
+					passed : true,
+					elemBox : [],
+					idBox : [],
+					infoBox : []
+				});
+
+				var prop ='',
+					rules,
+					target,
+					i,
+					len;
+
+				// 遍历选项 o 中的每组规则，初始化每组中的元素
+				for (prop in o){
+					rules = o[prop];
+					target = rules.target;
+
+					// 如果是以数组的形式存储
+					if (target instanceof Array){
+						for (i = 0, len = target.length; i < len; i++){
+							initValidation(target[i], rules);
+						}
+					} else {
+						initValidation(target, rules);
+					}
+				}
+			})($me, o);
+
+			// 保持链式操作
+			return $me;
 		}
 	});
 	$.extend({
