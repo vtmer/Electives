@@ -112,6 +112,22 @@
 					$(this).css('cursor', 'auto');
 				});
 		},
+		// ‘自定义的按钮’模拟‘文件上传input’功能
+		bindFileButton: function(options){
+			var o = $.extend({
+				fileButton: this.siblings('input:file').eq(0),
+				textArea: this.siblings('input:text').eq(0)
+			}, options);
+			var $me = this,
+				$fileButton = o.fileButton,
+				$textArea = o.textArea;
+			$me.on('click', function(){
+				$fileButton.trigger('click');
+			});
+			$fileButton.on('change', function(){
+				$textArea.val($(this).val());
+			});
+		},
 		// 表单验证
 		validate: function(options){
 			var $me = $(this),
@@ -195,8 +211,8 @@
 							var $this = $(this),
 								validation = $this.data('_validation_'),
 								formValidation = $me.data('_validation_'),
-								index = formValidation.idBox.indexOf(validation.id),
-								match = ( (new RegExp(validation.reg)).test($this.val()) === validation.expect );
+								match = ( (new RegExp(validation.reg)).test($this.val()) === validation.expect ),
+								index = $.indexOf(formValidation.idBox, validation.id);
 
 							// 检查正则表达式的结果是否与期望的值相匹配
 							if ( match ) {
@@ -316,6 +332,27 @@
         } : function(){
             document.selection.empty();
         },
+		indexOf: function(array, value, fromIndex){
+			if (!array instanceof Array){
+				return;
+			}
+			var index;
+			fromIndex = fromIndex || 0;
+			if (Array.prototype.indexOf){
+				index = array.indexOf(value, fromIndex);
+			} else {
+				for (var i = fromIndex, len = array.length; i < len; i++) {
+					if (array[i] === value) { 
+						index = i;
+						break; 
+					}
+				}
+				if(index === undefined){
+					index = -1;
+				}
+			}
+			return index;
+		},
 		createPlaceholder: function(elem){
 			//判断浏览器是否支持placeholder属性
 			if(!('placeholder' in document.createElement('input'))){

@@ -10,9 +10,12 @@
 					<img src="<?php echo 'http://opcourse-avatars.stor.sinaapp.com/'.$this->session->userdata('img'); ?>" alt="" />
 				
 					
-					<input type="file" name="userfile" size="20" />
-
-					<button type='submit' class='orange-button'>上传</button>
+					<div class="fileArea">
+						<input type="file" name="userfile" id='userfile' size="20" />
+						<input type="text" id='fileAddr' disabled = 'disabled' />
+						<button type='button' class='orange-button' id='fileButton'>浏览</button>
+						<button type='submit' class='orange-button'>上传</button>
+					</div>
 					<div>
 						<strong>仅支持JPG、GIF、PNG图片文件，且文件小于1M</strong>
 					</div>

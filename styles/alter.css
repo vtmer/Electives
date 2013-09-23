@@ -28,6 +28,15 @@
 .lte8 .main button{
 	background-image:url(../images/orange-button-32px.png);
 }
+.main input[type='text']{
+	width:130px;
+	padding:6px 8px;
+	border:1px solid #bfbfbf;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}
+
 /*alter-portrait*/
 .alter-portrait{
 	margin-bottom:30px;
@@ -44,15 +53,29 @@
 .alter-portrait h2{
 	background-position: -522px -259px;
 }
+.fileArea {
+	display: inline-block;
+}
+.lte7 .fileArea {
+	display: inline;
+	zoom: 1;
+}
+.alter-portrait input[type='file']{
+	display: none;
+}
+.alter-portrait input[type='text']{
+	width: 140px;
+	height:20px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.alter-portrait button {
+	vertical-align: bottom;
+}
+.lte7 button[type='button']{
+	margin-right:10px;
+}
 /*alter-profile*/
 .alter-profile h2{
 	background-position: -522px -259px;
-}
-.alter-profile input {
-	width:130px;
-	padding:6px 8px;
-	border:1px solid #bfbfbf;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius:5px;
 }
