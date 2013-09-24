@@ -15,6 +15,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/freeow.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/index.css');?>" />
 		<link rel="Shortcut Icon" href="<?php echo base_url('avatar/Electives.jpg');?>" >
+	
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger.css');?>" />
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger-theme-air.css');?>" />
 	</head>
 
 	<body class='index-page'>

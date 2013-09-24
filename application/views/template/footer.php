@@ -17,10 +17,11 @@
 		
 
 		<script src="<?php echo base_url('scripts/jquery.js');?>"></script>
-		<script src="<?php echo base_url('scripts/jquery.freeow.js');?>"></script>
 		<script src="<?php echo base_url('scripts');?>/{js_file}"></script>
 		<script src="<?php echo base_url('scripts/global.js');?>"></script>
+		<script src="<?php echo base_url('scripts/messenger.min.js');?>"></script>
+		
 		
 	</body>
-	<script src="<?php echo base_url('scripts/demo.js');?>"></script>
+	<script src="<?php echo base_url('scripts/prompt.js');?>"></script>
 </html>
