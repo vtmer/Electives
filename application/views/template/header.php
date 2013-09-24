@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/global.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/freeow.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles');?>/{css_file}" />
+		<link rel="Shortcut Icon" href="<?php echo base_url('avatar/Electives.jpg');?>" >
 	</head>
 
 <body class='{title}-page'>
