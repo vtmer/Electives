@@ -6,6 +6,12 @@ class User_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function admin_check($admin,$pwd)
+	{
+		$query = $this->db->get_where('admin',array('adminstartor' => $admin,'password' => md5($pwd)));
+		return ($query->num_rows() == 1) ? TRUE : FALSE;
+	}
+
 	public function is_exist($stu_id)
 	{
 		$query = $this->db->get_where('user',array('student_id' => $stu_id));
