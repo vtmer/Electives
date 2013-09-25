@@ -12,7 +12,7 @@ class Adsignin extends CI_Controller
 	{
 		if(!$this->is_logged_in())
 		{
-			$this->load->view('adsignin');
+			$this->load_page();
 		}
 		else
 		{
@@ -27,24 +27,38 @@ class Adsignin extends CI_Controller
 		
 		if($this->user_model->admin_check($admin,$pwd))
 		{
-			$data = array(
+			$sess_data = array(
+				'admin' => $admin,
 				'is_logged_in' => TRUE,
 				'is_admin' => TRUE
 			);
-			$this->session->set_userdata($data);
-			echo "<script>alert('登录成功！');</script>";
-			redirect('admins','refresh');
+			$this->session->set_userdata($sess_data);
+			$messenger = array('tips' => TRUE,'content' => '登录成功！');
+			$this->load_page($messenger);
+			$url = site_url('admins');
+			header("refresh:1;url=".$url."");
+			//echo "<script>alert('登录成功！');</script>";
+			//redirect('admins','refresh');
 		}
 		else
 		{
-			echo "<script>alert('登录失败！');</script>";
-			redirect('adsignin','refresh');
+			$messenger = array('tips' => TRUE,'content' => '登录失败，用户名或密码错误！');
+			$this->load_page($messenger);
+			$url = site_url('adsignin');
+			header("refresh:1;url=".$url."");
+			//echo "<script>alert('登录失败！');</script>";
+			//redirect('adsignin','refresh');
 		}
 	}
 
 	private function is_logged_in()
 	{
 		return ($this->session->userdata('is_logged_in') && $this->session->userdata('is_admin'));
+	}
+
+	public function load_page($data = false)
+	{
+		$this->load->view('adsignin',$data);
 	}
 }
 

@@ -7,6 +7,8 @@
 	<link href="<?php echo base_url('styles/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
 	<link href="<?php echo base_url('styles/adsignin.css'); ?>" rel="stylesheet" media="screen">
 
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger.css');?>" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger-theme-air.css');?>" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -30,13 +32,18 @@
 
     </div>
 
+    <?php if(isset($tips)):?>
+    <div id="messenger" hidden><?php echo $content;?></div>
+    <?php endif;?>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
+  <script src="<?php echo base_url('scripts/messenger.min.js');?>"></script>
   <script src="<?php echo base_url('scripts/adsignin.js'); ?>"></script>
- <script src="<?php echo base_url('scripts/global.js'); ?>"></script>
+  <script src="<?php echo base_url('scripts/global.js'); ?>"></script>
   </body>
- 
+  <script src="<?php echo base_url('scripts/prompt.js');?>"></script>
 </html>

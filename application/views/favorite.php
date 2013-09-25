@@ -3,9 +3,7 @@
 		</div>
 
 		<?php if(isset($tips)):?>
-	
-		<div id="freeow-message" hidden><?php echo $content;?></div>
-		<div id="freeow" class="freeow freeow-top-right"></div>
+		<div id="messenger" hidden><?php echo $content;?></div>
 		<?php endif;?>
 
 		<div class='main wrap'>

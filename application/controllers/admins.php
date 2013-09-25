@@ -9,7 +9,14 @@ class Admins extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('admins');
+		if(!$this->is_logged_in())
+		{
+			redirect('adsignin');
+		}
+		else
+		{
+			$this->load_page();		
+		}
 	}
 
 	
@@ -32,6 +39,11 @@ class Admins extends CI_Controller
 	{
 		return ($this->session->userdata('is_logged_in') && $this->session->userdata('is_admin'));
 	}	
+
+	public function load_page($data = false)
+	{
+		$this->load->view('admins');
+	}
 }
 
 

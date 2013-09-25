@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var tips = $("#freeow-message").html();
+	var tips = $("#messenger").html();
 	//alert(message);
 	if(tips !== undefined)
 	{

@@ -7,6 +7,9 @@
     <link href="<?php echo base_url('styles/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
     <link href="<?php echo base_url('styles/admins.css'); ?>" rel="stylesheet" media="screen">
 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger.css');?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger-theme-air.css');?>" />
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -24,48 +27,52 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://v3.bootcss.com/examples/navbar-fixed-top/#">工大选修-后台管理</a>
+          <a class="navbar-brand" href="#">工大选修-后台管理</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#">Home</a></li>
-            <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#about">About</a></li>
-            <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#contact">Contact</a></li>
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">关于</a></li>
+            <li><a href="#">联系</a></li>
             <li class="dropdown">
-              <a href="http://v3.bootcss.com/examples/navbar-fixed-top/#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#">Action</a></li>
-                <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#">Another action</a></li>
-                <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#">Something else here</a></li>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
-                <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#">Separated link</a></li>
-                <li><a href="http://v3.bootcss.com/examples/navbar-fixed-top/#">One more separated link</a></li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><h4>Hi</h4></li>
-            <li><h4>XXX</h4></li>
+            <li><h4><?php echo $this->session->userdata('admin'); ?></h4></li>
             <li><a href="<?php echo site_url('admins/logout')?>">退出</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
-
+    
+    <?php if(isset($tips)):?>
+    <div id="messenger" hidden><?php echo $content;?></div>
+    <?php endif;?>
 
   </div>
 
     <div id="footer">
       <div class="container">
-        <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+        <p class="text-muted credit">Build by <a target="_blank" href="http://sayue.github.io">sayue </a>and Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
       </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
+    <script src="<?php echo base_url('scripts/messenger.min.js');?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
   </body>
+    <script src="<?php echo base_url('scripts/prompt.js');?>"></script>
 </html>
