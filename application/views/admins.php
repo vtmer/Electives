@@ -35,22 +35,19 @@
             <li><a href="#">关于</a></li>
             <li><a href="#">联系</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a id="add" href="#">添加选修课程（批量）</a></li>
+                <li><a id="cos" href="#">修改选修课程</a></li>
+                <li><a id="pwd" href="#">管理员帐号</a></li>
+                <li><a id="anly" href="#">课程、用户数据分析</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><h4>Hi</h4></li>
             <li><h4><?php echo $this->session->userdata('admin'); ?></h4></li>
-            <li><a href="<?php echo site_url('admins/logout')?>">退出</a></li>
+            <li><a href="<?php echo site_url('admins/logout'); ?>">退出</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -60,7 +57,10 @@
     <div id="messenger" hidden><?php echo $content;?></div>
     <?php endif;?>
 
-  </div>
+	
+
+	</div>
+
 
     <div id="footer">
       <div class="container">
@@ -69,10 +69,11 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
+	<script src="<?php echo base_url('scripts/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('scripts/messenger.min.js');?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url('scripts/bootstrap.min.js'); ?>"></script>
   </body>
     <script src="<?php echo base_url('scripts/prompt.js');?>"></script>
+    <script src="<?php echo base_url('scripts/admins.js');?>"></script>
 </html>

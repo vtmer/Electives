@@ -19,6 +19,49 @@ class Admins extends CI_Controller
 		}
 	}
 
+	public function select($id)
+	{
+		switch($id)
+		{
+			case 'add_list':
+				$this->add_list();
+				break;
+
+			case 'edit_cos':
+				$this->edit_cos();
+				break;
+
+			case 'edit_pwd':
+				$this->edit_pwd();
+				break;
+
+			case 'analyse':
+				$this->analyse();
+				break;
+			
+		}
+	}
+
+	public function add_list()
+	{
+		return $this->load->view('template/add_list');
+	}
+
+	public function edit_cos()
+	{
+		return $this->load->view('template/edit_cos');
+	}
+
+	public function edit_pwd()
+	{
+		return $this->load->view('template/edit_pwd');
+		//return "test";
+	}
+
+	public function analyse()
+	{
+		return $this->load->view('template/analyse');
+	}
 	
 	public function logout()
 	{
