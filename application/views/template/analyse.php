@@ -11,7 +11,7 @@
 	width: 230px;
 }
 .right{
-	margin-left: 270px;
+	margin-left: 250px;
 	margin-top: -490px;
 }
 </style>	
