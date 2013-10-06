@@ -14,7 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/global.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/freeow.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles');?>/{css_file}" />
-		<link rel="Shortcut Icon" href="<?php echo base_url('avatar/Electives.jpg');?>" >
+		<link rel="Shortcut Icon" href="http://opcourse-avatars.stor.sinaapp.com/Electives.jpg" >
 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger.css');?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/messenger-theme-air.css');?>" />

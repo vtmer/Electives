@@ -5,7 +5,7 @@ class Adsignin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('admin_model');
 	}
 
 	public function index()
@@ -25,7 +25,7 @@ class Adsignin extends CI_Controller
 		$admin = $this->input->post('username',TRUE);
 		$pwd = $this->input->post('password',TRUE);
 		
-		if($this->user_model->admin_check($admin,$pwd))
+		if($this->admin_model->admin_check($admin,$pwd))
 		{
 			$sess_data = array(
 				'admin' => $admin,
@@ -37,8 +37,6 @@ class Adsignin extends CI_Controller
 			$this->load_page($messenger);
 			$url = site_url('admins');
 			header("refresh:1;url=".$url."");
-			//echo "<script>alert('登录成功！');</script>";
-			//redirect('admins','refresh');
 		}
 		else
 		{
@@ -46,8 +44,6 @@ class Adsignin extends CI_Controller
 			$this->load_page($messenger);
 			$url = site_url('adsignin');
 			header("refresh:1;url=".$url."");
-			//echo "<script>alert('登录失败！');</script>";
-			//redirect('adsignin','refresh');
 		}
 	}
 

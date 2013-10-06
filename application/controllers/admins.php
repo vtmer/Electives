@@ -5,7 +5,7 @@ class Admins extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('admin_model');
 	}
 
 	public function index()
@@ -46,7 +46,7 @@ class Admins extends CI_Controller
 
 	public function checkpwd($pwd)
 	{
-		if($this->user_model->checkpwd($pwd))
+		if($this->admin_model->checkpwd($pwd))
 		{
 			echo "correct";
 		}
@@ -59,7 +59,7 @@ class Admins extends CI_Controller
 	public function updatepwd()
 	{
 		$pwd = $this->input->post('pwd-new',TRUE);
-		if($this->user_model->adm_updatepwd($pwd))
+		if($this->admin_model->adm_updatepwd($pwd))
 		{
 			$messenger = array('tips' => TRUE,'content' => '修改成功！');
 			$this->load_page($messenger);

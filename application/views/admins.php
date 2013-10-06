@@ -17,6 +17,10 @@
     <![endif]-->
   </head>
   <body>
+  <style type="text/css">
+
+  }
+  </style>
     <div id="wrap">
 
     <div class="navbar navbar-default navbar-fixed-top">
@@ -30,11 +34,11 @@
           <a class="navbar-brand" href="#">工大选修-后台管理</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="#">关于</a></li>
-            <li><a href="#">联系</a></li>
-            <li class="dropdown">
+          <ul class="nav navbar-nav" id="nav-left">
+            <li class="active" id="index"><a href="#">首页</a></li>
+            <li id="about"><a href="#">关于</a></li>
+            <li id="contact"><a href="#">联系</a></li>
+            <li class="dropdown" id="manage">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a id="add" href="#">添加选修课程（批量）</a></li>
