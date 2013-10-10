@@ -43,6 +43,22 @@ class Admins extends CI_Controller
 		}
 	}
 
+	public function upload()
+	{
+ 		if($_FILES["userfile"]["type"] == "text/csv")		
+		{
+			$filename = $_FILE["userfile"]["name"];	
+			$storage = new SaeStorage();
+			
+			if($storage->upload('course',$filename,$_FILES["userfile"]["tmp_name"]))
+			{
+				$data = array('tips' => TRUE,'content' => '上传成功！');
+				$this->load_page($data);
+				$url = site_url('admins');
+				header("refresh:2;url=".$url."");	
+			}
+		}
+	}
 
 	public function checkpwd($pwd)
 	{

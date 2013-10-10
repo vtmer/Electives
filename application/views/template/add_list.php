@@ -10,13 +10,13 @@
 </style>	
 
 	<div class="jumbotron">
-		<form role="form">
+		<form role="form" action="<?php echo site_url('admins/upload');?>" method="post">
 		<h3>批量添加选修课程</h3>
 
 		
 
 		<label for="exampleInputFile">上传课程列表</label>
-    	<input type="file" id="exampleInputFile">
+    	<input type="file" id="exampleInputFile" name="userfile" />
     	
     	<div class="panel panel-info">
         <div class="panel-heading">
@@ -28,7 +28,7 @@
       	</div>
  
 
-		<button type="button" class="btn btn-primary">上传</button>
+		<button type="submit" class="btn btn-primary">上传</button>
 	
 		</form>
 	</div>

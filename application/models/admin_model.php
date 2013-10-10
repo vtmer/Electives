@@ -32,6 +32,33 @@ class Admin_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	public function insert()
+	{
+		$row = 1;
+		$handle = fopen('./test.csv','r');
+		while($data = fgetcsv($handle,1000,',')){
+			$query = $this->db->insert('course',array(
+					'name' => $data[0],
+					'campus' => $data[1],
+					'kind' => $data[2],
+					'code' => $data[3],
+					'teacher' => $data[4],
+					'email' => $data[5],
+					'phone' => $data[6],
+					'intro' => $data[7],
+					'interest_grade' => $data[8],
+					'exam_grade' => $data[9],
+					'multiple_grade' => $data[10]
+			));
+			if($query){
+				$row++;
+			}
+			echo "成功插入".$row."条数据";
+		}
+
+    }
+
 }
 
 ?>
