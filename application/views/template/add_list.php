@@ -10,7 +10,7 @@
 </style>	
 
 	<div class="jumbotron">
-		<form role="form" action="<?php echo site_url('admins/upload');?>" method="post">
+		<form role="form" action="<?php echo site_url('admins/upload');?>" method="post" enctype="multipart/form-data">
 		<h3>批量添加选修课程</h3>
 
 		

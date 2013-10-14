@@ -33,10 +33,11 @@ class Admin_model extends CI_Model
 		}
 	}
 
-	public function insert()
+	public function insert($filename)
 	{
 		$row = 1;
-		$handle = fopen('./test.csv','r');
+        //http://opcourse-course.stor.sinaapp.com/courses.csv
+        $handle = fopen('http://opcourse-course.stor.sinaapp.com/'.$filename,'r');
 		while($data = fgetcsv($handle,1000,',')){
 			$query = $this->db->insert('course',array(
 					'name' => $data[0],
@@ -54,11 +55,11 @@ class Admin_model extends CI_Model
 			if($query){
 				$row++;
 			}
-			echo "成功插入".$row."条数据";
+            //echo "成功插入".$row."条数据";
 		}
 
     }
 
 }
 
-?>
+

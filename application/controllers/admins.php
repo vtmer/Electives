@@ -47,11 +47,13 @@ class Admins extends CI_Controller
 	{
  		if($_FILES["userfile"]["type"] == "text/csv")		
 		{
-			$filename = $_FILE["userfile"]["name"];	
+			$filename = 'courses.csv'; 
 			$storage = new SaeStorage();
 			
 			if($storage->upload('course',$filename,$_FILES["userfile"]["tmp_name"]))
 			{
+                //$resource = $storage->read('course','course.csv');
+				$this->admin_model->insert($filename);
 				$data = array('tips' => TRUE,'content' => '上传成功！');
 				$this->load_page($data);
 				$url = site_url('admins');
