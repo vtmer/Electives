@@ -132,12 +132,13 @@
 		validate: function(options){
 			var $me = $(this),
 
-				// 预设默认参数
-				defaults = {
+				// 默认参数
+				// 将预设参数和用户自定义参数进行‘深层’合并
+				defaults = $.extend(true, {
 					isEmpty : {
 						reg : /^\s*$/,
 						expect : true,
-						info : 'It should not be empty!',
+						info : 'It should be empty!',
 						on : 'change'
 					},
 					isEmail : {
@@ -161,18 +162,19 @@
 					submit : {
 						on : 'click'
 					}
-				};
-			// 合并默认选项defaults和参数options以及用户自定义默认选项setup
+				}, $.fn.validate.setup);
+
+			// 合并默认选项defaults和参数options
 			var o = (function (defaults, options) {
 				var obj = {},
-					prop = '',
-					setup = $.fn.validate.setup;
+					prop = '';
+					
 				for (prop in options) {
 					obj[prop] = {
 						expect : true,
-						on : 'on'
+						on : 'change'
 					};
-					$.extend(obj[prop], defaults[prop], $.fn.validate.setup, options[prop]);
+					$.extend(obj[prop], defaults[prop], options[prop]);
 				}
 				return obj;
 			})(defaults, options);
@@ -182,7 +184,7 @@
 			// 2.绑定检测事件
 			function initValidation(elem, rules){
 
-				// 创建对象存储筛选后的规则
+				// 创建对象，存储筛选后的规则
 				var elemRules = $.extend({}, rules);
 				delete elemRules.target;
 				delete elemRules.on;
@@ -294,31 +296,18 @@
 				// 初始化表单的_validation_数据
 				$me.data('_validation_', {
 					passed : true,
-					elemBox : [],
 					idBox : [],
 					infoBox : []
 				});
 
-				var prop ='',
-					rules,
-					target,
-					i,
-					len;
-
 				// 遍历选项 o 中的每组规则，初始化每组中的元素
+				var prop ='',
+					rules;
 				for (prop in o){
 					rules = o[prop];
-					target = rules.target;
-
-					// 如果是以数组的形式存储
-					if (target instanceof Array){
-						for (i = 0, len = target.length; i < len; i++){
-							initValidation(target[i], rules);
-						}
-					} else {
-						initValidation(target, rules);
-					}
+					initValidation(rules.target, rules);
 				}
+				
 			})($me, o);
 
 			// 保持链式操作
