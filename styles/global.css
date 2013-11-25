@@ -367,6 +367,7 @@ a.load-more span{
 	height:45px;
 	line-height:45px;
 	overflow: hidden;
+	vertical-align: middle;
 	text-indent:-9999px;
 	background:url(../images/css-sprite.png) no-repeat  -522px -560px;
 }
